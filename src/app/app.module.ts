@@ -7,9 +7,9 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 
 @NgModule({
   declarations: [
+    AppComponent,
   ],
   imports: [
-    AppComponent,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule
@@ -20,6 +20,7 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
       useClass: ErrorInterceptor,
       multi: true
     }
-  ]
+  ],
+  bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
