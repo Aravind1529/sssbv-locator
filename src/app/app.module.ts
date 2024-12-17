@@ -4,6 +4,9 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
+import { CentreCardComponent } from './components/centre-card/centre-card.component';
+import { SearchFormComponent } from './components/search-form/search-form.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -12,7 +15,9 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule,
+    SearchFormComponent, CentreCardComponent
   ],
   providers: [
     {
