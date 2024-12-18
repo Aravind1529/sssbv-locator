@@ -1,12 +1,17 @@
 <div class="card education-centre-card">
     <div class="header">
       <h3>{{ centre.name }}</h3>
-      <div class="rating">
+      <h4>{{centre.samithiName}}</h4>
+      <!-- <div class="rating">
         <i class="fas fa-star"></i>
         <span>{{ centre.rating.toFixed(1) }}</span>
-      </div>
+      </div> -->
     </div>
     <div class="details">
+      <p class="detail-item">
+        <i class="fas fa-person"></i>
+        <span>{{ centre.guruName }}</span>
+      </p>
       <p class="detail-item">
         <i class="fas fa-map-marker-alt"></i>
         <span>{{ centre.address }}</span>

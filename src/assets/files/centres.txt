@@ -1,17 +1,4 @@
-import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { EducationCentre } from '../models/education-centre.model';
-import { HttpClient } from '@angular/common/http';
-
-@Injectable({
-  providedIn: 'root'
-})
-export class EducationCentreService {
-  // constructor(private http: HttpClient) {
-
-  // }
-  private mockCentres: EducationCentre[] = [
-    {     id: 1,
+{     id: 1,
       name: 'Vignesh Flats Balvikas Centre',
 	  samithiName: 'Valmiki Nagar Samithi',
 	  guruName: 'Usha Ramachandran',
@@ -25,7 +12,7 @@ export class EducationCentreService {
 	  samithiName: 'Valmiki Nagar Samithi',
 	  guruName: 'Anusha Veeraraghavan, Rajeswari Swaminathan',
       address: '2/414 AGS Colony 3rd cross street Kottivakkam',
-      area: 'Kottivakkam',
+      area: 'Thiruvanmiyur',
       pincode: '600041',
       type: 'Residential Balvikas',
       contact: '9363444980, 9087280713'
@@ -34,7 +21,7 @@ export class EducationCentreService {
 	  samithiName: 'Valmiki Nagar Samithi',
 	  guruName: 'Anuradha Kumar',
       address: '2/414 AGS Colony 3rd cross street Kottivakkam',
-      area: 'Kottivakkam',
+      area: 'Thiruvanmiyur',
       pincode: '600041',
       type: 'Residential Balvikas',
       contact: '9840535823'
@@ -66,18 +53,3 @@ export class EducationCentreService {
       type: 'Residential Balvikas',
       contact: '9840056200'
     },
-  ];
-
-  getCentres() {
-    console.log(JSON.stringify(this.mockCentres));
-  }
-
-  searchCentres(area: string, pincode: string): Observable<EducationCentre[]> {
-    this.getCentres();
-    return of(this.mockCentres.filter(centre => 
-      centre.area.toLowerCase().includes(area.toLowerCase()) &&
-      centre.pincode.includes(pincode)
-    ));
-  }
-  
-}
