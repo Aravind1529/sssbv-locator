@@ -1,0 +1,20 @@
+<div class="search-container">
+  <input
+    type="text"
+    [(ngModel)]="area"
+    placeholder="Enter Area"
+    class="input-field"
+    (keyup.enter)="onSearch()"
+  />
+  <input
+    type="text"
+    [(ngModel)]="pincode"
+    placeholder="Enter Pincode"
+    class="input-field"
+    (keyup.enter)="onSearch()"
+  />
+  <button (click)="onSearch()" class="btn">
+    <i class="fas fa-search"></i>
+    <span>Search</span>
+  </button>
+</div>
