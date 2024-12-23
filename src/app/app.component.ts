@@ -13,6 +13,7 @@ export class AppComponent {
   title = 'sssbv-locator';
   centres: EducationCentre[] = [];
   searched = false;
+  bvHelplineNumber = '+91 44 4011 5500';
 
   constructor(private educationCentreService: EducationCentreService) {}
 

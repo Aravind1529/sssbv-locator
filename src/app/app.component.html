@@ -8,6 +8,7 @@
       <h2>Found {{ centres.length }} centres</h2>
       <div class="results-card">
         <app-centre-card 
+        class="card-width"
         *ngFor="let centre of centres"
         [centre]="centre"
       ></app-centre-card>
@@ -15,7 +16,11 @@
     </div>
     
     <div *ngIf="searched && centres.length === 0" class="no-results">
-      <p><i class="fas fa-info-circle"></i> No education centres found in this area.</p>
+      <div>
+        <i class="fas fa-info-circle"></i> 
+        No Balvikas Centres found in this area !
+      </div>
+      <h3>Please contact this helpline - {{ bvHelplineNumber }}</h3>
     </div>
   </div>
 </main>
