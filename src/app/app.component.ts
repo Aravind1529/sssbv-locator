@@ -17,6 +17,10 @@ export class AppComponent {
 
   constructor(private educationCentreService: EducationCentreService) {}
 
+  ngOnInit() {
+    this.educationCentreService.getCentres();
+  }
+
   onSearch(searchData: {area: string, pincode: string}) {
     this.educationCentreService.searchCentres(searchData.area, searchData.pincode)
       .subscribe(results => {
