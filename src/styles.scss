@@ -23,7 +23,7 @@
   }
   
   .container {
-    max-width: 1800px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
   }
@@ -109,6 +109,7 @@
   @media (max-width: 768px) {
     .container {
       padding: 16px;
+      max-width: 350px;
     }
   
     .input-field {
@@ -123,5 +124,23 @@
     .btn {
       width: 100%;
       justify-content: center;
+    }
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+    }
+    
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+    
+    h3 {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+    h4 {
+      font-size: 0.5rem;
+      font-weight: 600;
     }
   }

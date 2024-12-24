@@ -48,11 +48,14 @@
   @media (max-width: 768px) {
     .header {
       flex-direction: column;
-      align-items: flex-start;
+      align-items: center;
       gap: 12px;
     }
 
     .rating {
       align-self: flex-end;
+    }
+    .details {
+      font-size: small;
     }
   }

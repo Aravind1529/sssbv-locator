@@ -51,11 +51,18 @@
       width: max-content;
     }
 
-    .divider {
-      height: 1px;
-      width: 100%;
-      background: var(--red-to-pink-to-purple-horizontal-gradient);
-      margin-block: 1.5rem;
+    .header-wrapper {
+      text-align: center;
+    }
+    
+    .results {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    } 
+
+    .results-card {
+      gap: 1em !important;
     }
   }
   h1 {
@@ -90,7 +97,7 @@
     border-color: cornflowerblue;
     text-align: center;
   }
-  
+
   .header-wrapper {
     text-align: center;
   }
