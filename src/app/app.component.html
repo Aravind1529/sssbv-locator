@@ -1,8 +1,10 @@
 <main class="main">
   <div class="container">
-    <img src="assets/images/balvikas-logo.jpg"  
+    <div class="header-wrapper">
+      <img src="assets/images/balvikas-logo.jpg"  
          alt="Balvikas Logo" class="bv-logo"/>
-    <h1>Sri Sathya Sai Balvikas Locator</h1>
+      <h1>Sri Sathya Sai Balvikas Locator</h1>
+    </div>
     <app-search-form (search)="onSearch($event)"></app-search-form>
     
     <div class="results" *ngIf="centres.length > 0">
