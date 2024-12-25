@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SearchBvComponent } from './search-bv/search-bv.component';
+import { SearchBvComponent } from './components/search-bv/search-bv.component';
 import { AppComponent } from './app.component';
 
 const routes: Routes = [
-  // { path: '', component: AppComponent },
-  // { path: 'search', component: SearchBvComponent },
+  // { path: '', component: AppComponent }, //main content - locator form 
+  // { path: 'home', component: SearchBvComponent },
+  { path: 'search', component: SearchBvComponent },
   { path: '**', redirectTo: '' }
 ];
 

@@ -83,6 +83,15 @@
   .btn i {
     font-size: 18px;
   }
+
+  .loading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100%;
+    gap: 5em;
+  }
   
   /* Typography */
   h1, h2, h3 {
@@ -144,3 +153,5 @@
       font-weight: 600;
     }
   }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

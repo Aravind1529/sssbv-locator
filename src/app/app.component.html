@@ -1,20 +1,40 @@
+<header>
+  <nav class="nav-bar">
+    <i class="fa fa-home fa-lg home-icon" aria-hidden="true" [routerLink]="'/'" ></i>
+    <a href="https://www.sssbalvikas.in" target="_blank" class="a-link">About SSS Balvikas</a>
+  </nav>
+  <div class="header-wrapper">
+    <img
+      src="assets/images/balvikas-logo.jpg"
+      alt="Balvikas Logo"
+      class="bv-logo"
+    />
+    <h1>Sri Sathya Sai Balvikas Locator</h1>
+  </div>
+</header>
 <main class="main">
   <div class="container">
-    <div class="header-wrapper">
-      <img src="assets/images/balvikas-logo.jpg"  
-         alt="Balvikas Logo" class="bv-logo"/>
-      <h1>Sri Sathya Sai Balvikas Locator</h1>
-    </div>
-    <app-search-form (search)="onSearch($event)"></app-search-form>
+    <!-- <app-search-form (search)="onSearch($event)"></app-search-form> -->
     
-    <div class="results" *ngIf="centres.length > 0">
-      <h2>Found {{ centres.length }} centres</h2>
-      <div class="results-card">
+    <!-- <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+          @for (option of filteredOptions | async; track option) {
+            <mat-option [value]="option">{{option.name}}</mat-option>
+            }
+          </mat-autocomplete>
+        </mat-form-field>
+      </form> -->
+      
+      <!-- <div class="results" *ngIf="centres.length > 0">
+        <h2>Found {{ centres.length }} centres</h2>
+        <div class="results-card">
         <app-centre-card 
         class="card-width"
         *ngFor="let centre of centres"
         [centre]="centre"
-      ></app-centre-card>
+        ></app-centre-card>
       </div>
     </div>
     
@@ -24,7 +44,8 @@
         No Balvikas Centres found in this area !
       </div>
       <h3>Please contact this helpline - {{ bvHelplineNumber }}</h3>
-    </div>
+    </div> -->
   </div>
 </main>
+
 <router-outlet />

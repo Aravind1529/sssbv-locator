@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -7,6 +7,19 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 import { CentreCardComponent } from './components/centre-card/centre-card.component';
 import { SearchFormComponent } from './components/search-form/search-form.component';
 import { CommonModule } from '@angular/common';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ButtonModule } from 'primeng/button';
+import { AutoCompleteModule } from 'primeng/autocomplete';
+import { FormsModule } from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {Observable} from 'rxjs';
+import {map, startWith} from 'rxjs/operators';
+import {AsyncPipe} from '@angular/common';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -17,14 +30,27 @@ import { CommonModule } from '@angular/common';
     AppRoutingModule,
     HttpClientModule,
     CommonModule,
-    SearchFormComponent, CentreCardComponent
+    SearchFormComponent, 
+    CentreCardComponent,
+    MatSlideToggleModule,
+    BrowserAnimationsModule,
+    ButtonModule,
+    AutoCompleteModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule,
+    AsyncPipe,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,
       multi: true
-    }
+    },
+    provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]
 })
