@@ -36,10 +36,10 @@
 
   main {
     width: 100%;
-    // min-height: 100%;
+    min-height: 72vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    // align-items: center;
     padding: 1rem;
     box-sizing: inherit;
     position: relative;
@@ -63,6 +63,27 @@
 
     .results-card {
       gap: 1em !important;
+    }
+
+    .nav-bar {
+      justify-content: space-between;
+      .a-link {
+        font-size: smaller !important;
+        font-weight: 500 !important;
+      }
+      > :last-child {
+        margin-left: 0 !important;
+      }
+    }
+
+    .app-footer {
+      margin: 0 25px;
+      justify-content: center !important;
+      font-weight: 500 !important;
+      font-size: smaller !important;
+      > :last-child {
+        display: none;
+      }
     }
   }
   h1 {
@@ -108,20 +129,45 @@
     margin-bottom: 10px;
     align-items: center;
     display: flex;
-    justify-content: space-between;
     
     .a-link {
       color: white;
       font-weight: 700;
       font-size: larger;
     }
-  }
-  .nav-bar > * {
-    margin: 0 1em ;
+
+    > * {
+      margin: 0 1em;
+    }
+
+    > :last-child {
+      margin-left: auto;
+    }
   }
  
 
   .home-icon {
     cursor: pointer;
     color: white;
+  }
+  .app-footer {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 25px;
+    font-weight: 700;
+    font-size: large;
+  }
+
+  .con-shape {
+    container-shape: base;
+  }
+
+  .example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
   }

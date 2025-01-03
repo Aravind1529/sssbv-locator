@@ -14,8 +14,8 @@ export class SearchFormComponent {
   @Output() search = new EventEmitter<{area: string, pincode: string}>();
 
   onSearch() {
-    if (this.area.trim() || this.pincode.trim()) {
-      this.search.emit({ area: this.area.trim(), pincode: this.pincode.trim() });
+    if (this.area?.trim() || this.pincode.trim()) {
+      this.search.emit({ area: this.area?.trim(), pincode: this.pincode.trim() });
     }
   }
 }

@@ -25,7 +25,23 @@ export class AppComponent {
   items: any;
   value: any;
   myControl = new FormControl<string | User>('');
-  options: User[] = [{name: 'Mary'}, {name: 'Shelley'}, {name: 'Igor'}];
+  options: User[] = [{name: 'Thiruvanmiyur',
+  },{name: 'Adayar', 
+  },{name: 'AGS Colony', 
+  },{name: 'Adambakkam', 
+  },{name: 'Besant Nagar', 
+  },{name: 'Kasturi Bai Nagar', 
+  },{name: 'Neelangarai', 
+  },{name: 'Palavakkam', 
+  },{name: 'Medavakkam', 
+  },{name: 'Pallikaranai', 
+  },{name: 'IIT Colony', 
+  },{name: 'Jalladianpet', 
+  },{name: 'Rajakilpakkam', 
+  },{name: 'Velachery', 
+  },{name: 'Vijaya Nagar'
+  }];
+
   filteredOptions!: Observable<User[]>;
 
   constructor(private educationCentreService: EducationCentreService) {}

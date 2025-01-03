@@ -2,6 +2,7 @@
   <nav class="nav-bar">
     <i class="fa fa-home fa-lg home-icon" aria-hidden="true" [routerLink]="'/'" ></i>
     <a href="https://www.sssbalvikas.in" target="_blank" class="a-link">About SSS Balvikas</a>
+    <a href="https://www.ssssoindia.org" target="_blank" class="a-link">About SSSSO</a>
   </nav>
   <div class="header-wrapper">
     <img
@@ -14,20 +15,22 @@
 </header>
 <main class="main">
   <div class="container">
-    <!-- <app-search-form (search)="onSearch($event)"></app-search-form> -->
+    <app-search-form (search)="onSearch($event)"></app-search-form>
     
-    <!-- <form class="example-form">
-      <mat-form-field class="example-full-width">
-        <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
-        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-          @for (option of filteredOptions | async; track option) {
-            <mat-option [value]="option">{{option.name}}</mat-option>
-            }
-          </mat-autocomplete>
-        </mat-form-field>
-      </form> -->
+    <form class="example-form">
+      <div class="custom-autocomplete">
+        <mat-form-field class="example-full-width">
+          <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto" class="con-shape">
+          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+            @for (option of filteredOptions | async; track option) {
+              <mat-option [value]="option">{{option.name}}</mat-option>
+              }
+            </mat-autocomplete>
+          </mat-form-field>
+      </div>
+      </form>
       
-      <!-- <div class="results" *ngIf="centres.length > 0">
+      <div class="results" *ngIf="centres.length > 0">
         <h2>Found {{ centres.length }} centres</h2>
         <div class="results-card">
         <app-centre-card 
@@ -44,8 +47,14 @@
         No Balvikas Centres found in this area !
       </div>
       <h3>Please contact this helpline - {{ bvHelplineNumber }}</h3>
-    </div> -->
+    </div>
   </div>
 </main>
+<footer>
+  <div class="app-footer">
+    <p>"End of Education is Character" - BABA</p>
+    <p>"Educare is the Veda of 21st Century" - BABA</p>
+  </div>
+</footer>
 
 <router-outlet />
