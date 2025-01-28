@@ -20,6 +20,8 @@ import {AsyncPipe} from '@angular/common';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { NgLabelTemplateDirective, NgOptionTemplateDirective, NgSelectComponent } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,10 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatAutocompleteModule,
     ReactiveFormsModule,
     AsyncPipe,
+    NgSelectModule,
+    NgLabelTemplateDirective,
+    NgOptionTemplateDirective,
+    NgSelectComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
   providers: [

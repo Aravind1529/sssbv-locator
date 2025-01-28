@@ -14,7 +14,7 @@ export class EducationCentreService {
   
   getCentres() {
     console.log(JSON.stringify(this.mockCentres));
-    this.getCentresURL = 'https://run.mocky.io/v3/abd7c9d1-d50e-4e71-aeaf-4b2f01ce9243';
+    this.getCentresURL = 'https://tnnbvcentres-cmse.onrender.com/tnnBvCentres';
     // const headers = new HttpHeaders().set('Accept', 'application/json');
     this.http.get<EducationCentre[]>(this.getCentresURL).subscribe(x => {
       console.log('bv centres in cmse are: ', x );

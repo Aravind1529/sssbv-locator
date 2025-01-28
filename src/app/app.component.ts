@@ -5,6 +5,7 @@ import { EducationCentreService } from './services/education-centre.service';
 import { AutoComplete, AutoCompleteCompleteEvent, AutoCompleteModule } from 'primeng/autocomplete';
 import { FormControl } from '@angular/forms';
 import { map, Observable, startWith } from 'rxjs';
+import { NgLabelTemplateDirective, NgOptionTemplateDirective, NgSelectComponent, NgSelectConfig } from '@ng-select/ng-select';
 
 export interface User {
   name: string;
@@ -24,37 +25,11 @@ export class AppComponent {
   bvHelplineNumber = '+91 44 4011 5500';
   items: any;
   value: any;
-  myControl = new FormControl<string | User>('');
-  options: User[] = [{name: 'Thiruvanmiyur',
-  },{name: 'Adayar', 
-  },{name: 'AGS Colony', 
-  },{name: 'Adambakkam', 
-  },{name: 'Besant Nagar', 
-  },{name: 'Kasturi Bai Nagar', 
-  },{name: 'Neelangarai', 
-  },{name: 'Palavakkam', 
-  },{name: 'Medavakkam', 
-  },{name: 'Pallikaranai', 
-  },{name: 'IIT Colony', 
-  },{name: 'Jalladianpet', 
-  },{name: 'Rajakilpakkam', 
-  },{name: 'Velachery', 
-  },{name: 'Vijaya Nagar'
-  }];
-
-  filteredOptions!: Observable<User[]>;
 
   constructor(private educationCentreService: EducationCentreService) {}
 
   ngOnInit() {
     this.educationCentreService.getCentres();
-    this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(''),
-      map(value => {
-        const name = typeof value === 'string' ? value : value?.name;
-        return name ? this._filter(name as string) : this.options.slice();
-      }),
-    );
   }
 
   onSearch(searchData: {area: string, pincode: string}) {
@@ -65,13 +40,4 @@ export class AppComponent {
       });
   }
 
-  displayFn(user: User): string {
-    return user && user.name ? user.name : '';
-  }
-
-  private _filter(name: string): User[] {
-    const filterValue = name.toLowerCase();
-
-    return this.options.filter(option => option.name.toLowerCase().includes(filterValue));
-  }
 }
