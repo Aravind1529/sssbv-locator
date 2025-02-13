@@ -8,7 +8,7 @@ export interface EducationCentre {
   area: string;
   pincode: string;
   type: string;
-  contact: string;
+  guruContactNumber: string;
   ecName: string;
   ecContact: string;
   convenorName: string;

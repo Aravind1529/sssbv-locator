@@ -11,10 +11,9 @@ import { EducationCentreService } from '../../services/education-centre.service'
   styleUrl: './search-form.component.scss'
 })
 export class SearchFormComponent {
-  area: string = '';
   areas: any[] = [];
   pincode: string = '';
-  selectedArea: any;
+  selectedArea!: string;
   @Output() search = new EventEmitter<{area: string, pincode: string}>();
 
   constructor(private educationService: EducationCentreService) {

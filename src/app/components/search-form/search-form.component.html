@@ -6,18 +6,12 @@
     class="input-field"
     (keyup.enter)="onSearch()"
   /> -->
-  <ng-select [items]="areas" bindLabel="area" bindValue="area" [(ngModel)]="selectedArea"
-    (change)="onSearch()" class="ng-select-areas" />
-    <input
-    type="text"
-    [(ngModel)]="pincode"
-    placeholder="Enter Pincode"
-    class="input-field"
-    (keyup.enter)="onSearch()"
-    />
-    <button (click)="onSearch()" class="btn">
-      <i class="fas fa-search"></i>
-      <span>Search</span>
-    </button>
-  </div>
-  <b>Selected Area: </b> {{selectedArea}}>
+  <ng-select placeholder="Enter Area" [items]="areas" bindLabel="area" bindValue="area" [(ngModel)]="selectedArea" (change)="onSearch()"
+    class="ng-select-areas" />
+  <input type="text" [(ngModel)]="pincode" placeholder="Enter Pincode" class="input-field" (keyup.enter)="onSearch()" />
+  <button (click)="onSearch()" class="btn">
+    <i class="fas fa-search"></i>
+    <span>Search</span>
+  </button>
+</div>
+<b>Selected Area: </b> {{selectedArea}}>

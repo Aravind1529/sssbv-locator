@@ -159,3 +159,12 @@
   }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.ng-select.ng-select-single .ng-select-container {
+  height: 45px;
+  border-radius: 8px;
+}
+.ng-select-areas {
+  width: 23em !important;
+  max-width: 50em !important;
+}
