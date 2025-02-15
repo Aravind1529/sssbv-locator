@@ -26,7 +26,7 @@ export class SearchFormComponent {
   }
   onSearch() {
     if (this.selectedArea?.trim() || this.pincode.trim()) {
-      this.search.emit({ area: this.selectedArea?.trim(), pincode: this.pincode.trim() });
+      this.search.emit({ area: this.selectedArea ? this.selectedArea?.trim(): '', pincode: this.pincode.trim() });
     }
   }
 }
