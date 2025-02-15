@@ -18,8 +18,9 @@ export class EducationCentreService {
   getCentres() {
     console.log(JSON.stringify(this.mockCentres));
     // this.getCentresURL = 'https://tnnbvcentres-cmse.onrender.com/tnnBvCentres';
+    // this.getCentresURL = 'http://localhost:3000/api/centres';
+
     this.getCentresURL = 'https://bv-locator-services.onrender.com/api/centres';
-    // const headers = new HttpHeaders().set('Accept', 'application/json');
     this.http.get<EducationCentre[]>(this.getCentresURL).subscribe(
       (x) => {
         console.log('bv centres in cmse are: ', x);
@@ -31,8 +32,6 @@ export class EducationCentreService {
       }
     );
   }
-
-  groupCentres() {}
 
   searchCentres(area: string, pincode: string): Observable<EducationCentre[]> {
     return of(
