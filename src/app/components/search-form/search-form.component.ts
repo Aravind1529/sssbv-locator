@@ -20,6 +20,9 @@ export class SearchFormComponent {
     this.educationService.areas$.subscribe(x=> {
       this.areas = x;
     });
+    this.educationService.selectedAreaHasValue$.subscribe(x=> {
+      if(!x) this.selectedArea = 'Select any Area';
+    });
   }
   onSearch() {
     if (this.selectedArea?.trim() || this.pincode.trim()) {

@@ -8,15 +8,17 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class EducationCentreService {
   constructor(private http: HttpClient) {}
+  mockCentres: EducationCentre[] = [];
   getCentresURL!: string;
-  private mockCentres: EducationCentre[] = [];
   samithis: any;
   areas$ = new BehaviorSubject<any[]>([]);
+  selectedAreaHasValue$ = new BehaviorSubject<boolean>(true);
   private jsonUrl = 'assets/json/valid-jan28.json';
 
   getCentres() {
     console.log(JSON.stringify(this.mockCentres));
-    this.getCentresURL = 'https://tnnbvcentres-cmse.onrender.com/tnnBvCentres';
+    // this.getCentresURL = 'https://tnnbvcentres-cmse.onrender.com/tnnBvCentres';
+    this.getCentresURL = 'https://bv-locator-services.onrender.com/api/centres';
     // const headers = new HttpHeaders().set('Accept', 'application/json');
     this.http.get<EducationCentre[]>(this.getCentresURL).subscribe(
       (x) => {

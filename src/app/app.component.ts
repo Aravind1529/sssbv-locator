@@ -37,5 +37,9 @@ export class AppComponent {
         this.searched = true;
       });
   }
-
+  reset() {
+    this.centres = [];
+    this.searched = false;
+    this.educationCentreService.selectedAreaHasValue$.next(false);
+  }
 }
