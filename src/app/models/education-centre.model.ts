@@ -1,4 +1,5 @@
 export interface EducationCentre {
+  district: string;
   id: number;
   guruName: string;
   samithiName: string;
@@ -7,5 +8,10 @@ export interface EducationCentre {
   area: string;
   pincode: string;
   type: string;
-  contact: string;
+  guruContactNumber: string;
+  ecName: string;
+  ecContact: string;
+  convenorName: string;
+  convenorContact: string;
+  googleMapLink: string;
 }
