@@ -10,23 +10,33 @@
     <div class="details">
       <p class="detail-item">
         <i class="fas fa-user"></i>
-        <span>{{ centre.guruName }}</span>
-      </p>
-      <p class="detail-item">
-        <i class="fas fa-map-marker-alt"></i>
-        <span>{{ centre.address }}</span>
+        <span>Balvikas Guru - {{ centre.guruName }} ({{ centre.guruContactNumber }})</span>
       </p>
       <!-- <p *ngIf="centre.type" class="detail-item">
         <i class="fas fa-tag"></i>
         <span>{{ centre.type }}</span>
       </p> -->
-      <p class="detail-item">
+      <!-- <p class="detail-item">
         <i class="fas fa-phone"></i>
         <span>{{ centre.guruContactNumber }}</span>
-      </p>
-      <p class="detail-item">
+      </p> -->
+      <!-- <p class="detail-item">
         <i class="fas fa-location-dot"></i>
         <span>{{ centre.area }} - {{ centre.pincode }}</span>
+      </p> -->
+      <p class="detail-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <span>{{ centre.address }}</span>
+      </p>
+      <p class="detail-item">
+        <i class="fas fa-user"></i>
+        <!-- <div> -->
+          Education Coordinator - {{ centre.ecName }} ({{centre.ecContact}})
+        <!-- </div> -->
+      </p>
+      <p class="detail-item">
+        <i class="fas fa-user"></i>
+        <span>Convenor - {{ centre.convenorName }} ({{centre.convenorContact}})</span>
       </p>
     </div>
   </div>
