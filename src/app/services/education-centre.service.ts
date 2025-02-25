@@ -58,7 +58,7 @@ export class EducationCentreService {
   getDistinctAreas(areasList: EducationCentre[]) {
     let samithisGrouped: any[] = [];
     samithisGrouped = areasList.map((centre) => {
-      return { area: centre.area, district: centre.district };
+      return { area: centre.area.trim(), district: centre.district.trim() };
     });
     const uniqueAreas = Array.from(
       new Map(
