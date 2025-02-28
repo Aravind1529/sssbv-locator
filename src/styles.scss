@@ -48,11 +48,11 @@
   
   /* Form Elements */
   .input-field {
-    padding: 12px 16px;
+    padding: 12px 10px;
     border: 2px solid var(--border-color);
     border-radius: 8px;
     margin-right: 12px;
-    font-size: 16px;
+    font-size: 14px;
     width: 100%;
     max-width: 300px;
     transition: border-color 0.3s ease;
@@ -164,6 +164,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   border-radius: 8px;
 }
 .ng-select-areas {
-  width: 20em !important;
+  width: 19.5rem !important;
   max-width: 50em !important;
 }

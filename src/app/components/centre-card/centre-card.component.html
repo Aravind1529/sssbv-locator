@@ -28,15 +28,20 @@
         <i class="fas fa-map-marker-alt"></i>
         <span>{{ centre.address }}</span>
       </p>
+      <span style="margin-left: 30px">Pincode - {{ centre.pincode }}</span>
       <p class="detail-item">
         <i class="fas fa-user"></i>
-        <!-- <div> -->
-          Education Coordinator - {{ centre.ecName }} ({{centre.ecContact}})
-        <!-- </div> -->
+        <span>
+          Education Coordinator - {{ centre.ecName }} <a [href]="'tel:' + centre.ecContact">({{centre.ecContact}})</a>
+        </span>
       </p>
       <p class="detail-item">
         <i class="fas fa-user"></i>
         <span>Convenor - {{ centre.convenorName }} ({{centre.convenorContact}})</span>
+      </p>
+      <p class="detail-item" *ngIf="centre.googleMapLink">
+        <i class="fas fa-map-marker-alt"></i>
+        <a [href]="centre.googleMapLink" target="_blank">{{centre.googleMapLink}}</a>
       </p>
     </div>
   </div>
