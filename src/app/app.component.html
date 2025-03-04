@@ -15,7 +15,7 @@
 </header>
 <main class="main">
   <div class="container">
-    <app-search-form (search)="onSearch($event)"></app-search-form>
+    <app-search-form (search)="onSearch($event)" (clearSearch)="reset()"></app-search-form>
     
       <div class="results" *ngIf="centres.length > 0">
         <h2>Found {{ centres.length }} centres</h2>

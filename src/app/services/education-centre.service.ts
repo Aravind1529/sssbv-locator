@@ -65,6 +65,9 @@ export class EducationCentreService {
         samithisGrouped.map((samithi) => [samithi.area, samithi])
       ).values()
     );
+    uniqueAreas.map((x) => {
+      x.city = (x.district.includes('Chennai ') || x.district.includes('Thiruvallur ')) ? 'Chennai' : x.district;
+    });
     console.log('unique', uniqueAreas);
     this.areas$.next(uniqueAreas.sort((a, b) => a.area.localeCompare(b.area)));
   }

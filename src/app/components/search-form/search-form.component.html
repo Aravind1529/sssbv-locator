@@ -6,7 +6,9 @@
     class="input-field"
     (keyup.enter)="onSearch()"
   /> -->
-  <ng-select placeholder="Enter Area" [items]="areas" bindLabel="area" bindValue="area" [(ngModel)]="selectedArea"
+  <ng-select placeholder="Enter City" [items]="uniqueCities" bindLabel="city" bindValue="city" class="ng-select-areas"
+    [(ngModel)]="selectedCity" (change)="onCitySelect()"/>
+  <ng-select placeholder="Enter Area" [items]="filteredAreas" bindLabel="area" bindValue="area" [(ngModel)]="selectedArea"
     (change)="onSearch()" class="ng-select-areas" [addTag]="true"/>
   <input type="text" [(ngModel)]="pincode" placeholder="Enter Pincode" class="input-field" (keyup.enter)="onSearch()" />
   <button (click)="onSearch()" class="btn">
