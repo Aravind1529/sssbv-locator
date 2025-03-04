@@ -18,6 +18,7 @@ export class SearchFormComponent {
   uniqueCities!: any[];
   selectedCity!: string;
   filteredAreas!: any[];
+  disableArea: boolean = true;
   @Output() search = new EventEmitter<{area: string, pincode: string}>();
   @Output() clearSearch = new EventEmitter<null>();
 
@@ -32,6 +33,7 @@ export class SearchFormComponent {
     });
   }
   onSearch() {
+    // this.clearSearch.emit();
     if (this.selectedArea?.trim() || this.pincode.trim()) {
       this.search.emit({ area: this.selectedArea ? this.selectedArea?.trim(): '', pincode: this.pincode.trim() });
     }
@@ -40,6 +42,8 @@ export class SearchFormComponent {
   onCitySelect() {
     console.log('city', this.selectedCity);
     this.selectedArea = 'Select area';
+    this.pincode = '';
+    this.disableArea = false;
     this.clearSearch.emit();
     this.filteredAreas = this.areas.filter(area => area.city == this.selectedCity);
   }

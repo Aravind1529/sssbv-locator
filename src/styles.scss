@@ -167,3 +167,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   width: 19.5rem !important;
   max-width: 50em !important;
 }
+
+.ng-select.ng-select-disabled {
+  background-color: #f0f0f0; /* Light gray background */
+  color: #999; /* Gray text */
+  cursor: not-allowed;
+  opacity: 0.6;
+}
