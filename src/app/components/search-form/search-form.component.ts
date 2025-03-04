@@ -14,11 +14,14 @@ export class SearchFormComponent {
   areas: any[] = [];
   pincode: string = '';
   selectedArea!: string;
+  uniqueCities!: any[];
   @Output() search = new EventEmitter<{area: string, pincode: string}>();
 
   constructor(private educationService: EducationCentreService) {
     this.educationService.areas$.subscribe(x=> {
       this.areas = x;
+      this.uniqueCities = [...new Set(this.areas.map(x => x.city))];
+      console.log(this.uniqueCities);
     });
     this.educationService.selectedAreaHasValue$.subscribe(x=> {
       if(!x) this.selectedArea = 'Select any Area';

@@ -167,3 +167,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   width: 19.5rem !important;
   max-width: 50em !important;
 }
+
+.ng-dropdown-panel .ng-dropdown-panel-items .ng-optgroup.ng-option-disabled {
+  font-size: larger;
+  font-weight: bold;
+}
