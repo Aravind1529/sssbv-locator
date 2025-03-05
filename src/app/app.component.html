@@ -18,7 +18,7 @@
     <app-search-form (search)="onSearch($event)" (clearSearch)="reset()"></app-search-form>
     
       <div class="results" *ngIf="centres.length > 0">
-        <h2>Found {{ centres.length }} centres</h2>
+        <h3>Found {{ centres.length }} centre(s)</h3>
         <div class="results-card">
         <app-centre-card 
         class="card-width"

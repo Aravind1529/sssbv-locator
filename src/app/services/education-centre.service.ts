@@ -16,14 +16,14 @@ export class EducationCentreService {
   private jsonUrl = 'assets/json/valid-jan28.json';
 
   getCentres() {
-    console.log(JSON.stringify(this.mockCentres));
+    // console.log(JSON.stringify(this.mockCentres));
     // this.getCentresURL = 'https://tnnbvcentres-cmse.onrender.com/tnnBvCentres';
     // this.getCentresURL = 'http://localhost:3000/api/centres';
 
     this.getCentresURL = 'https://bv-locator-services.onrender.com/api/centres';
     this.http.get<EducationCentre[]>(this.getCentresURL).subscribe(
       (x) => {
-        console.log('bv centres in cmse are: ', x);
+        // console.log('bv centres in cmse are: ', x);
         this.mockCentres = x;
         this.getDistinctAreas(this.mockCentres);
       },
@@ -46,7 +46,7 @@ export class EducationCentreService {
   readJsonFromAssets() {
     this.http.get<EducationCentre[]>(this.jsonUrl).subscribe(
       (x) => {
-        console.log('from local ', x);
+        // console.log('from local ', x);
         this.getDistinctAreas(x);
       },
       (error) => {
@@ -68,7 +68,7 @@ export class EducationCentreService {
     uniqueAreas.map((x) => {
       x.city = (x.district.includes('Chennai ') || x.district.includes('Thiruvallur ')) ? 'Chennai' : x.district;
     });
-    console.log('unique', uniqueAreas);
+    // console.log('unique', uniqueAreas);
     this.areas$.next(uniqueAreas.sort((a, b) => a.area.localeCompare(b.area)));
   }
 }
