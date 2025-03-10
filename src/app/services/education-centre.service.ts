@@ -8,24 +8,23 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class EducationCentreService {
   constructor(private http: HttpClient) {}
-  mockCentres: EducationCentre[] = [];
+  balvikasCentres: EducationCentre[] = [];
   getCentresURL!: string;
   samithis: any;
   areas$ = new BehaviorSubject<any[]>([]);
   selectedAreaHasValue$ = new BehaviorSubject<boolean>(true);
-  private jsonUrl = 'assets/json/valid-jan28.json';
+  private jsonUrl = 'assets/json/bvCentres.json';
 
   getCentres() {
-    // console.log(JSON.stringify(this.mockCentres));
-    // this.getCentresURL = 'https://tnnbvcentres-cmse.onrender.com/tnnBvCentres';
+    // console.log(JSON.stringify(this.balvikasCentres));
     // this.getCentresURL = 'http://localhost:3000/api/centres';
-
+    
     this.getCentresURL = 'https://bv-locator-services.onrender.com/api/centres';
     this.http.get<EducationCentre[]>(this.getCentresURL).subscribe(
       (x) => {
         // console.log('bv centres in cmse are: ', x);
-        this.mockCentres = x;
-        this.getDistinctAreas(this.mockCentres);
+        this.balvikasCentres = x;
+        this.getDistinctAreas(this.balvikasCentres);
       },
       (error) => {
         console.error('Error fetching data:', error);
@@ -35,7 +34,7 @@ export class EducationCentreService {
 
   searchCentres(area: string, pincode: string): Observable<EducationCentre[]> {
     return of(
-      this.mockCentres.filter(
+      this.balvikasCentres.filter(
         (centre) =>
           centre.area?.toLowerCase().includes(area?.toLowerCase()) &&
           centre.pincode.includes(pincode)
@@ -46,7 +45,7 @@ export class EducationCentreService {
   readJsonFromAssets() {
     this.http.get<EducationCentre[]>(this.jsonUrl).subscribe(
       (x) => {
-        // console.log('from local ', x);
+        this.balvikasCentres = x;
         this.getDistinctAreas(x);
       },
       (error) => {
