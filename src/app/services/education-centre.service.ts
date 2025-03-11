@@ -57,7 +57,7 @@ export class EducationCentreService {
   getDistinctAreas(areasList: EducationCentre[]) {
     let samithisGrouped: any[] = [];
     samithisGrouped = areasList.map((centre) => {
-      return { area: centre.area.trim(), district: centre.district.trim() };
+      return { area: centre.area?.trim(), district: centre.district?.trim() };
     });
     const uniqueAreas = Array.from(
       new Map(
@@ -65,7 +65,7 @@ export class EducationCentreService {
       ).values()
     );
     uniqueAreas.map((x) => {
-      x.city = (x.district.includes('Chennai ') || x.district.includes('Thiruvallur ')) ? 'Chennai' : x.district;
+      x.city = (x.district?.includes('Chennai ') || x.district?.includes('Thiruvallur ')) ? 'Chennai' : x.district;
     });
     // console.log('unique', uniqueAreas);
     this.areas$.next(uniqueAreas.sort((a, b) => a.area.localeCompare(b.area)));
