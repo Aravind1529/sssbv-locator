@@ -37,7 +37,7 @@ export class EducationCentreService {
       this.balvikasCentres.filter(
         (centre) =>
           centre.area?.toLowerCase().includes(area?.toLowerCase()) &&
-          centre.pincode.includes(pincode)
+          centre.pincode?.includes(pincode)
       )
     );
   }
