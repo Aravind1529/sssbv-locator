@@ -39,7 +39,7 @@ export class SearchFormComponent {
     if(this.selectedCity && !this.selectedArea) return;
     if(this.selectedArea === 'Select any Area') this.selectedArea = '';
     if (this.selectedArea?.trim() || this.pincode.trim()) {
-      this.search.emit({ area: this.selectedArea ? this.selectedArea?.trim(): '', pincode: this.pincode.trim(), city: this.selectedCity});
+      this.search.emit({ area: this.selectedArea ? this.selectedArea?.trim(): '', pincode: this.pincode.trim(), city: this.selectedCity ? this.selectedCity?.trim(): ''});
     }
   }
 
