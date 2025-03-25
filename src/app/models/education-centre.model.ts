@@ -14,4 +14,5 @@ export interface EducationCentre {
   convenorName: string;
   convenorContact: string;
   googleMapLink: string;
+  city: string;
 }

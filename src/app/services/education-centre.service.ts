@@ -23,8 +23,11 @@ export class EducationCentreService {
     this.http.get<EducationCentre[]>(this.getCentresURL).subscribe(
       (x) => {
         // console.log('bv centres in cmse are: ', x);
-        this.balvikasCentres = x;
-        this.getDistinctAreas(this.balvikasCentres);
+        this.balvikasCentres= x;
+        this.balvikasCentres.map((x) => {
+          x.city = (x.district?.includes('Chennai ') || x.district?.includes('Thiruvallur ')) ? 'Chennai' : x.district;
+        });
+        this.areas$.next(this.balvikasCentres);
       },
       (error) => {
         console.error('Error fetching data:', error);
@@ -32,12 +35,12 @@ export class EducationCentreService {
     );
   }
 
-  searchCentres(area: string, pincode: string): Observable<EducationCentre[]> {
+  searchCentres(area: string, pincode: string, city: string): Observable<EducationCentre[]> {
     return of(
       this.balvikasCentres.filter(
         (centre) =>
           centre.area?.toLowerCase().includes(area?.toLowerCase()) &&
-          centre.pincode?.includes(pincode)
+          centre.pincode?.includes(pincode) && centre.city?.includes(city)
       )
     );
   }
@@ -46,7 +49,10 @@ export class EducationCentreService {
     this.http.get<EducationCentre[]>(this.jsonUrl).subscribe(
       (x) => {
         this.balvikasCentres = x;
-        this.getDistinctAreas(x);
+        this.balvikasCentres.map((x) => {
+          x.city = (x.district?.includes('Chennai ') || x.district?.includes('Thiruvallur ')) ? 'Chennai' : x.district;
+        });
+        this.areas$.next(this.balvikasCentres);
       },
       (error) => {
         console.error('Error fetching data:', error);
@@ -54,20 +60,4 @@ export class EducationCentreService {
     );
   }
 
-  getDistinctAreas(areasList: EducationCentre[]) {
-    let samithisGrouped: any[] = [];
-    samithisGrouped = areasList.map((centre) => {
-      return { area: centre.area?.trim(), district: centre.district?.trim() };
-    });
-    const uniqueAreas = Array.from(
-      new Map(
-        samithisGrouped.map((samithi) => [samithi.area, samithi])
-      ).values()
-    );
-    uniqueAreas.map((x) => {
-      x.city = (x.district?.includes('Chennai ') || x.district?.includes('Thiruvallur ')) ? 'Chennai' : x.district;
-    });
-    // console.log('unique', uniqueAreas);
-    this.areas$.next(uniqueAreas.sort((a, b) => a.area.localeCompare(b.area)));
-  }
 }

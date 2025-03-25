@@ -4,6 +4,7 @@ import { NgLabelTemplateDirective, NgOptionTemplateDirective, NgSelectComponent 
 import { EducationCentreService } from '../../services/education-centre.service';
 import { EMPTY, NEVER } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { EducationCentre } from '../../models/education-centre.model';
 
 @Component({
   selector: 'app-search-form',
@@ -13,21 +14,21 @@ import { CommonModule } from '@angular/common';
   styleUrl: './search-form.component.scss'
 })
 export class SearchFormComponent {
-  areas: any[] = [];
+  areas: EducationCentre[] = [];
   pincode: string = '';
   selectedArea!: string;
   uniqueCities!: any[];
   selectedCity!: string;
   filteredAreas!: any[];
   disableArea: boolean = true;
-  @Output() search = new EventEmitter<{area: string, pincode: string}>();
+  uniqueAreas!: any[];
+  @Output() search = new EventEmitter<{area: string, pincode: string, city: string}>();
   @Output() clearSearch = new EventEmitter<null>();
 
   constructor(private educationService: EducationCentreService) {
     this.educationService.areas$.subscribe(x=> {
       this.areas = x;
       this.uniqueCities = [...new Set(this.areas.map(x => x.city))];
-      // console.log(this.uniqueCities);
     });
     this.educationService.selectedAreaHasValue$.subscribe(x=> {
       if(!x) this.selectedArea = 'Select any Area';
@@ -38,21 +39,9 @@ export class SearchFormComponent {
     if(this.selectedCity && !this.selectedArea) return;
     if(this.selectedArea === 'Select any Area') this.selectedArea = '';
     if (this.selectedArea?.trim() || this.pincode.trim()) {
-      this.search.emit({ area: this.selectedArea ? this.selectedArea?.trim(): '', pincode: this.pincode.trim() });
+      this.search.emit({ area: this.selectedArea ? this.selectedArea?.trim(): '', pincode: this.pincode.trim(), city: this.selectedCity});
     }
   }
-
-  // disableSearch() {
-  //   if(this.pincode) {
-  //     console.log('this.pincode',this.pincode); 
-  //     return false;
-  //   };
-  //   if(this.selectedArea && this.selectedCity) {
-  //     console.log('this.selectedArea && this.selectedCity' , this.selectedArea, this.selectedCity);  
-  //     return false;
-  //   }
-  //   return true;
-  // }
 
   onCitySelect() {
     // console.log('city', this.selectedCity);
@@ -60,6 +49,22 @@ export class SearchFormComponent {
     this.pincode = '';
     this.disableArea = false;
     this.clearSearch.emit();
-    this.filteredAreas = this.areas.filter(area => area.city == this.selectedCity);
+    this.getDistinctAreas(this.areas);
+  }
+  
+  getDistinctAreas(areasList: EducationCentre[]) {
+    let samithisGrouped: any[] = [];
+    
+    this.filteredAreas = areasList.filter(area => area.city === this.selectedCity);
+    
+    samithisGrouped = this.filteredAreas.map((centre) => {
+      return { area: centre.area?.trim(), district: centre.district?.trim(), city: centre.city?.trim() };
+    });
+    this.uniqueAreas = Array.from(
+      new Map(
+        samithisGrouped.map((samithi) => [samithi.area, samithi])
+      ).values()
+    );
+    this.filteredAreas = this.uniqueAreas.sort((a,b) => a.area.localeCompare(b.area));
   }
 }
