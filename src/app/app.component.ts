@@ -20,7 +20,7 @@ export class AppComponent {
   bvHelplineNumber = '+91 44 4011 5500';
   value: any;
   districts: any;
-  
+  searchCriteria: string = 'Area';
 
   constructor(private educationCentreService: EducationCentreService) {
   }

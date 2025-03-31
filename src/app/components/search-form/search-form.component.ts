@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgLabelTemplateDirective, NgOptionTemplateDirective, NgSelectComponent } from '@ng-select/ng-select';
 import { EducationCentreService } from '../../services/education-centre.service';
@@ -24,6 +24,7 @@ export class SearchFormComponent {
   uniqueAreas!: any[];
   @Output() search = new EventEmitter<{area: string, pincode: string, city: string}>();
   @Output() clearSearch = new EventEmitter<null>();
+  @Input() searchCriteria! : string;
 
   constructor(private educationService: EducationCentreService) {
     this.educationService.areas$.subscribe(x=> {

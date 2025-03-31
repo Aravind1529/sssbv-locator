@@ -184,3 +184,25 @@
   .example-full-width {
     width: 100%;
   }
+
+  .search-criteria {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3em;
+  }
+
+  .mat-button-toggle-appearance-standard {
+    background: #dee9f4;
+    width: 12.5em;
+    height: 2.5em;
+    font-size: large;
+  }
+
+  .mat-button-toggle-appearance-standard.mat-button-toggle-checked {
+    color: var(--mat-standard-button-toggle-selected-state-text-color, var(--mat-sys-on-secondary-container));
+    background-color: #6fc2cf;
+  }
+
+.mat-button-toggle-appearance-standard .mat-button-toggle-label-content {
+  line-height: var(--mat-standard-button-toggle-height, 55px) !important;
+}
