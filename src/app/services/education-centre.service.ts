@@ -35,14 +35,23 @@ export class EducationCentreService {
     );
   }
 
-  searchCentres(area: string, pincode: string, city: string): Observable<EducationCentre[]> {
-    return of(
-      this.balvikasCentres.filter(
-        (centre) =>
-          centre.area?.toLowerCase().includes(area?.toLowerCase()) &&
-          centre.pincode?.includes(pincode) && centre.city?.includes(city)
-      )
-    );
+  searchCentres(searchData: any, criteria: string): Observable<EducationCentre[]> {
+    if(criteria == 'Area') {
+      return of(
+        this.balvikasCentres.filter(
+          (centre) =>
+            centre.area?.toLowerCase().includes(searchData.area?.toLowerCase()) &&
+            centre.city?.includes(searchData.city)
+        )
+      );
+    } else {
+      return of(
+        this.balvikasCentres.filter(
+          (centre) =>
+            centre.pincode?.includes(searchData.pincode)
+        )
+      );
+    }
   }
 
   readJsonFromAssets() {

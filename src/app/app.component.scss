@@ -97,9 +97,11 @@
     }
 
     .mat-button-toggle-appearance-standard {
-      width: 11.5em !important;
+      width: 13em !important;
+      height: 2.5em !important;
       font-size: small !important;
     }
+
   }
   h1 {
     color: #057082;
@@ -199,7 +201,7 @@
   .mat-button-toggle-appearance-standard {
     background: #dee9f4;
     width: 12.5em;
-    height: 2.5em;
+    height: 2.1em;
     font-size: large;
   }
 
@@ -207,7 +209,3 @@
     color: var(--mat-standard-button-toggle-selected-state-text-color, var(--mat-sys-on-secondary-container));
     background-color: #6fc2cf;
   }
-
-.mat-button-toggle-appearance-standard .mat-button-toggle-label-content {
-  line-height: var(--mat-standard-button-toggle-height, 55px) !important;
-}

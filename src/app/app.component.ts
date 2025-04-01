@@ -30,13 +30,14 @@ export class AppComponent {
     this.educationCentreService.readJsonFromAssets();
   }
 
-  onSearch(searchData: {area: string, pincode: string, city: string}) {
-    this.educationCentreService.searchCentres(searchData.area, searchData.pincode, searchData.city)
+  onSearch(searchData: any) {
+    this.educationCentreService.searchCentres(searchData, this.searchCriteria)
       .subscribe(results => {
         this.centres = results;
         this.searched = true;
       });
   }
+
   reset() {
     this.centres = [];
     this.searched = false;

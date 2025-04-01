@@ -22,7 +22,7 @@ export class SearchFormComponent {
   filteredAreas!: any[];
   disableArea: boolean = true;
   uniqueAreas!: any[];
-  @Output() search = new EventEmitter<{area: string, pincode: string, city: string}>();
+  @Output() search = new EventEmitter<{}>();
   @Output() clearSearch = new EventEmitter<null>();
   @Input() searchCriteria! : string;
 
@@ -35,19 +35,30 @@ export class SearchFormComponent {
       if(!x) this.selectedArea = 'Select any Area';
     });
   }
+
   onSearch() {
-    // this.clearSearch.emit();
+    this.searchCriteria == 'Area' ? this.searchByArea() : this.searchByPincode();
+  }
+  
+  searchByArea() {
     if(this.selectedCity && !this.selectedArea) return;
     if(this.selectedArea === 'Select any Area') this.selectedArea = '';
     if (this.selectedArea?.trim() || this.pincode.trim()) {
-      this.search.emit({ area: this.selectedArea ? this.selectedArea?.trim(): '', pincode: this.pincode.trim(), city: this.selectedCity ? this.selectedCity?.trim(): ''});
+      this.search.emit({ area: this.selectedArea ? this.selectedArea?.trim(): '', city: this.selectedCity ? this.selectedCity?.trim(): ''});
+    }
+  }
+
+  searchByPincode() {
+    if (this.pincode.trim()) {
+      this.search.emit({pincode: this.pincode.trim()});
+    } else {
+      return;
     }
   }
 
   onCitySelect() {
     // console.log('city', this.selectedCity);
     this.selectedArea = 'Select area';
-    this.pincode = '';
     this.disableArea = false;
     this.clearSearch.emit();
     this.getDistinctAreas(this.areas);

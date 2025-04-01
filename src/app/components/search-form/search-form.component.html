@@ -9,10 +9,10 @@
     <ng-select *ngIf="searchCriteria == 'Area'" placeholder="Enter City" [items]="uniqueCities" bindLabel="city" bindValue="city" class="ng-select-areas"
       [(ngModel)]="selectedCity" (change)="onCitySelect()" />
     <ng-select *ngIf="searchCriteria == 'Area'" placeholder="Enter Area" [items]="filteredAreas" bindLabel="area" bindValue="area"
-      [(ngModel)]="selectedArea" (change)="onSearch()" class="ng-select-areas" [addTag]="true"
+      [(ngModel)]="selectedArea" (change)="searchByArea()" class="ng-select-areas" [addTag]="true"
       [disabled]="!selectedCity" />
-  <input *ngIf="searchCriteria == 'Pincode'" type="text" [(ngModel)]="pincode" placeholder="Enter Pincode" class="input-field" (keyup.enter)="onSearch()" />
-  <button (click)="onSearch()" class="btn" [disabled]="(!this.selectedArea || !this.selectedCity) && !pincode">
+  <input *ngIf="searchCriteria == 'Pincode'" type="text" [(ngModel)]="pincode" placeholder="Enter Pincode" class="input-field" (keyup.enter)="searchByPincode()" />
+  <button (click)="onSearch()" class="btn" [disabled]="(searchCriteria == 'Area' && (!this.selectedArea || !this.selectedCity)) || (searchCriteria == 'Pincode' && !pincode)">
     <i class="fas fa-search"></i>
     <span>Search</span>
   </button>
