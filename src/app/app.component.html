@@ -18,8 +18,8 @@
     <div class="search-criteria">
       <p>
         <mat-button-toggle-group name="searchCriteria" [(ngModel)]="searchCriteria" aria-label="Font Style">
-          <mat-button-toggle (click)="reset()" value="Area" matTooltip="You can search">Search with AREA</mat-button-toggle>
-          <mat-button-toggle (click)="reset()" value="Pincode">Search with PINCODE</mat-button-toggle>
+          <mat-button-toggle (click)="reset();switchTab()" value="Area" matTooltip="You can search">Search with AREA</mat-button-toggle>
+          <mat-button-toggle (click)="reset();switchTab()" value="Pincode">Search with PINCODE</mat-button-toggle>
         </mat-button-toggle-group>
       </p>
     </div>

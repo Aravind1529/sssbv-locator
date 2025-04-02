@@ -6,9 +6,9 @@
     class="input-field"
     (keyup.enter)="onSearch()"
   /> -->
-    <ng-select *ngIf="searchCriteria == 'Area'" placeholder="Enter City" [items]="uniqueCities" bindLabel="city" bindValue="city" class="ng-select-areas"
+    <ng-select #selectCity  *ngIf="searchCriteria == 'Area'" placeholder="Enter City" [items]="uniqueCities" bindLabel="city" bindValue="city" class="ng-select-areas"
       [(ngModel)]="selectedCity" (change)="onCitySelect()" />
-    <ng-select *ngIf="searchCriteria == 'Area'" placeholder="Enter Area" [items]="filteredAreas" bindLabel="area" bindValue="area"
+    <ng-select #selectArea *ngIf="searchCriteria == 'Area'" placeholder="Enter Area" [items]="filteredAreas" bindLabel="area" bindValue="area"
       [(ngModel)]="selectedArea" (change)="searchByArea()" class="ng-select-areas" [addTag]="true"
       [disabled]="!selectedCity" />
   <input *ngIf="searchCriteria == 'Pincode'" type="text" [(ngModel)]="pincode" placeholder="Enter Pincode" class="input-field" (keyup.enter)="searchByPincode()" />

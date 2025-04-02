@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, Input } from '@angular/core';
+import { Component, Output, EventEmitter, Input, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgLabelTemplateDirective, NgOptionTemplateDirective, NgSelectComponent } from '@ng-select/ng-select';
 import { EducationCentreService } from '../../services/education-centre.service';
@@ -25,14 +25,21 @@ export class SearchFormComponent {
   @Output() search = new EventEmitter<{}>();
   @Output() clearSearch = new EventEmitter<null>();
   @Input() searchCriteria! : string;
+  @ViewChild('selectCity') selectCity!: NgSelectComponent; 
+  @ViewChild('selectArea') selectArea!: NgSelectComponent; 
 
   constructor(private educationService: EducationCentreService) {
     this.educationService.areas$.subscribe(x=> {
       this.areas = x;
       this.uniqueCities = [...new Set(this.areas.map(x => x.city))];
     });
-    this.educationService.selectedAreaHasValue$.subscribe(x=> {
-      if(!x) this.selectedArea = 'Select any Area';
+    this.educationService.clearModels$.subscribe(isClearModel=> {
+      if(isClearModel) {
+        this.selectArea.clearModel();
+        this.selectCity.clearModel();
+        this.pincode = ''; 
+      }
+      this.educationService.clearModels$.next(false);
     });
   }
 
@@ -42,8 +49,7 @@ export class SearchFormComponent {
   
   searchByArea() {
     if(this.selectedCity && !this.selectedArea) return;
-    if(this.selectedArea === 'Select any Area') this.selectedArea = '';
-    if (this.selectedArea?.trim() || this.pincode.trim()) {
+    if (this.selectedArea?.trim()) {
       this.search.emit({ area: this.selectedArea ? this.selectedArea?.trim(): '', city: this.selectedCity ? this.selectedCity?.trim(): ''});
     }
   }
@@ -58,7 +64,7 @@ export class SearchFormComponent {
 
   onCitySelect() {
     // console.log('city', this.selectedCity);
-    this.selectedArea = 'Select area';
+    this.selectArea.clearModel();
     this.disableArea = false;
     this.clearSearch.emit();
     this.getDistinctAreas(this.areas);

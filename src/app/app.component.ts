@@ -41,6 +41,9 @@ export class AppComponent {
   reset() {
     this.centres = [];
     this.searched = false;
-    this.educationCentreService.selectedAreaHasValue$.next(false);
+  }
+
+  switchTab() {
+    this.educationCentreService.clearModels$.next(true);
   }
 }

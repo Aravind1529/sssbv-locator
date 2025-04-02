@@ -12,7 +12,7 @@ export class EducationCentreService {
   getCentresURL!: string;
   samithis: any;
   areas$ = new BehaviorSubject<any[]>([]);
-  selectedAreaHasValue$ = new BehaviorSubject<boolean>(true);
+  clearModels$ = new BehaviorSubject<boolean>(false);
   private jsonUrl = 'assets/json/bvCentres.json';
 
   getCentres() {
