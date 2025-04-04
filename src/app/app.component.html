@@ -1,8 +1,11 @@
 <header>
   <nav class="nav-bar">
-    <i class="fa fa-home fa-lg home-icon" aria-hidden="true" (click)="reset()" ></i>
-    <a href="https://www.sssbalvikas.in" target="_blank" class="a-link">About SSS Balvikas</a>
-    <a href="https://www.ssssoindia.org" target="_blank" class="a-link">About SSSSO</a>
+    <i class="fa fa-home fa-lg home-icon" aria-hidden="true" (click)="reset()"></i>
+    <button mat-button [matMenuTriggerFor]="menu" class="about-menu">About</button>
+    <mat-menu #menu="matMenu">
+      <a href="https://www.sssbalvikas.in" target="_blank" mat-menu-item>Sri Sathya Sai Balvikas</a>
+      <a href="https://www.ssssoindia.org" target="_blank" mat-menu-item>Sri Sathya Sai Seva Organisations, India</a>
+    </mat-menu>
   </nav>
   <div class="header-wrapper">
     <img

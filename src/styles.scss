@@ -187,3 +187,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mat-button-toggle-appearance-standard .mat-button-toggle-label-content {
   line-height: var(--mat-standard-button-toggle-height, 45px);
 }
+
+.about-menu span.mdc-button__label {
+  color: white !important; 
+  font-size: large;
+}
