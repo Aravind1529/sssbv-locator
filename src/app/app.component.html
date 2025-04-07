@@ -1,6 +1,6 @@
 <header>
   <nav class="nav-bar">
-    <i class="fa fa-home fa-lg home-icon" aria-hidden="true" (click)="reset()"></i>
+    <i class="fa fa-home fa-lg home-icon" aria-hidden="true" (click)="reset();switchTab()"></i>
     <button mat-button [matMenuTriggerFor]="menu" class="about-menu">About</button>
     <mat-menu #menu="matMenu">
       <a href="https://www.sssbalvikas.in" target="_blank" mat-menu-item>Sri Sathya Sai Balvikas</a>

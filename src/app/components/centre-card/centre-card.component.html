@@ -37,7 +37,7 @@
       </p>
       <p class="detail-item">
         <i class="fas fa-user"></i>
-        <span>Convenor - {{ centre.convenorName }} ({{centre.convenorContact}})</span>
+        <span>Convenor - {{ centre.convenorName }} <a [href]="'tel:' + centre.convenorContact">({{centre.convenorContact}})</a></span>
       </p>
       <p class="detail-item" *ngIf="centre.googleMapLink">
         <i class="fas fa-map-marker-alt"></i>
