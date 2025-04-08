@@ -35,11 +35,10 @@ export class SearchFormComponent {
     });
     this.educationService.clearModels$.subscribe(isClearModel=> {
       if(isClearModel) {
-        this.selectArea.clearModel();
-        this.selectCity.clearModel();
+        this.selectArea?.clearModel();
+        this.selectCity?.clearModel();
         this.pincode = ''; 
       }
-      this.educationService.clearModels$.next(false);
     });
   }
 

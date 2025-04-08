@@ -163,7 +163,11 @@
 
     .mat-button-toggle-checked .mat-button-toggle-button:has(.mat-button-toggle-checkbox-wrapper) {
       padding-left: 25px !important;
-  }
+    }
+
+    .about-menu span.mdc-button__label {
+      font-size: medium;
+    }
   }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
