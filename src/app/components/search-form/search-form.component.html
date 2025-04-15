@@ -16,7 +16,7 @@
 
   <!-- Pincode Criteria -->
   <div *ngIf="searchCriteria == 'Pincode'" class="search-container">
-    <input [formControl]="pincode" type="text" placeholder="Enter Pincode" class="input-field" />
+    <input [formControl]="pincode" type="text" placeholder="Enter Pincode" class="input-field" (keyup.enter)="searchByPincode()"/>
       <!-- [ngClass]="{ 'invalid-pincode-input': pincode.invalid && (pincode.dirty || pincode.value) }" -->
     <button (click)="onSearch()" class="btn" [disabled]="pincode.invalid">
       <i class="fas fa-search"></i>
