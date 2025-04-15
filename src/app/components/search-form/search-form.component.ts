@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter, Input, ViewChild } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgLabelTemplateDirective, NgOptionTemplateDirective, NgSelectComponent } from '@ng-select/ng-select';
 import { EducationCentreService } from '../../services/education-centre.service';
 import { EMPTY, NEVER } from 'rxjs';
@@ -9,13 +9,13 @@ import { EducationCentre } from '../../models/education-centre.model';
 @Component({
   selector: 'app-search-form',
   standalone: true,
-  imports: [FormsModule,NgSelectComponent, CommonModule],
+  imports: [FormsModule,NgSelectComponent, CommonModule, ReactiveFormsModule ],
   templateUrl: './search-form.component.html',
   styleUrl: './search-form.component.scss'
 })
 export class SearchFormComponent {
   areas: EducationCentre[] = [];
-  pincode: string = '';
+  // pincode: string = '';
   selectedArea!: string;
   uniqueCities!: any[];
   selectedCity!: string;
@@ -27,6 +27,10 @@ export class SearchFormComponent {
   @Input() searchCriteria! : string;
   @ViewChild('selectCity') selectCity!: NgSelectComponent; 
   @ViewChild('selectArea') selectArea!: NgSelectComponent; 
+  pincode = new FormControl('', [
+    Validators.required,
+    Validators.pattern('^[1-9][0-9]{5}$')
+  ]);
 
   constructor(private educationService: EducationCentreService) {
     this.educationService.areas$.subscribe(x=> {
@@ -37,7 +41,7 @@ export class SearchFormComponent {
       if(isClearModel) {
         this.selectArea?.clearModel();
         this.selectCity?.clearModel();
-        this.pincode = ''; 
+        this.pincode.setValue(null);
       }
     });
   }
@@ -54,8 +58,8 @@ export class SearchFormComponent {
   }
 
   searchByPincode() {
-    if (this.pincode.trim()) {
-      this.search.emit({pincode: this.pincode.trim()});
+    if (this.pincode) {
+      this.search.emit({pincode: this.pincode});
     } else {
       return;
     }

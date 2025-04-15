@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { EducationCentre } from './models/education-centre.model';
 import { EducationCentreService } from './services/education-centre.service';
+import { AppConstants } from './shared/app.constants';
 
 export interface User {
   name: string;
@@ -17,10 +18,10 @@ export class AppComponent {
   title = 'sssbv-locator';
   centres: EducationCentre[] = [];
   searched = false;
-  bvHelplineNumber = '+91 44 4011 5500';
   value: any;
   districts: any;
   searchCriteria: string = 'Area';
+  constants = AppConstants;
 
   constructor(private educationCentreService: EducationCentreService) {
   }

@@ -1,20 +1,32 @@
-<div class="search-container">
-  <!-- <input
-    type="text"
-    [(ngModel)]="area"
-    placeholder="Enter Area"
-    class="input-field"
-    (keyup.enter)="onSearch()"
-  /> -->
-    <ng-select #selectCity  *ngIf="searchCriteria == 'Area'" placeholder="Enter City" [items]="uniqueCities" bindLabel="city" bindValue="city" class="ng-select-areas"
-      [(ngModel)]="selectedCity" (change)="onCitySelect()" />
-    <ng-select #selectArea *ngIf="searchCriteria == 'Area'" placeholder="Enter Area" [items]="filteredAreas" bindLabel="area" bindValue="area"
+<div>
+
+  <!-- Area Criteria  -->
+  <div *ngIf="searchCriteria == 'Area'" class="search-container">
+    <ng-select #selectCity placeholder="Enter City" [items]="uniqueCities" bindLabel="city" bindValue="city"
+      class="ng-select-areas" [(ngModel)]="selectedCity" (change)="onCitySelect()" />
+    <ng-select #selectArea placeholder="Enter Area" [items]="filteredAreas" bindLabel="area" bindValue="area"
       [(ngModel)]="selectedArea" (change)="searchByArea()" class="ng-select-areas" [addTag]="true"
       [disabled]="!selectedCity" />
-  <input *ngIf="searchCriteria == 'Pincode'" type="text" [(ngModel)]="pincode" placeholder="Enter Pincode" class="input-field" (keyup.enter)="searchByPincode()" />
-  <button (click)="onSearch()" class="btn" [disabled]="(searchCriteria == 'Area' && (!this.selectedArea || !this.selectedCity)) || (searchCriteria == 'Pincode' && !pincode)">
-    <i class="fas fa-search"></i>
-    <span>Search</span>
-  </button>
+    <button (click)="onSearch()" class="btn"
+      [disabled]="(searchCriteria == 'Area' && (!this.selectedArea || !this.selectedCity))">
+      <i class="fas fa-search"></i>
+      <span>Search</span>
+    </button>
+  </div>
+
+  <!-- Pincode Criteria -->
+  <div *ngIf="searchCriteria == 'Pincode'" class="search-container">
+    <input [formControl]="pincode" type="text" placeholder="Enter Pincode" class="input-field"
+      (keyup.enter)="searchByPincode()" />
+      <!-- [ngClass]="{ 'invalid-pincode-input': pincode.invalid && (pincode.dirty || pincode.value) }" -->
+    <button (click)="onSearch()" class="btn" [disabled]="pincode.invalid">
+      <i class="fas fa-search"></i>
+      <span>Search</span>
+    </button>
+  </div>
 </div>
-<!-- <b>Selected Area: </b> {{selectedArea}} -->
+<div *ngIf="searchCriteria == 'Pincode' && (pincode.dirty || pincode.value)" class="pincode-error">
+  <p *ngIf="pincode.errors?.['required']">Pincode is required.</p>
+  <p *ngIf="pincode.errors?.['pattern']">Invalid pincode format. Must be 6 digits starting with 1–9 with no space in
+    between.</p>
+</div>

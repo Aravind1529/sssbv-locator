@@ -3,8 +3,10 @@
     <i class="fa fa-home fa-lg home-icon" aria-hidden="true" (click)="reset();switchTab()"></i>
     <button mat-button [matMenuTriggerFor]="menu" class="about-menu">About</button>
     <mat-menu #menu="matMenu">
-      <a href="https://www.sssbalvikas.in" target="_blank" mat-menu-item>Sri Sathya Sai Balvikas</a>
-      <a href="https://www.ssssoindia.org" target="_blank" mat-menu-item>Sri Sathya Sai Seva Organisations, India</a>
+      <!-- <a href="https://www.sssbalvikas.in" target="_blank" mat-menu-item>Sri Sathya Sai Balvikas</a> -->
+      <a [href]="constants.SSSBV_URL" target="_blank" mat-menu-item>Sri Sathya Sai Balvikas</a>
+      <a [href]="constants.TN_ORG_URL" target="_blank" mat-menu-item>Sri Sathya Sai Seva Organisations, TamilNadu</a>
+      <a [href]="constants.INDIA_ORG_URL" target="_blank" mat-menu-item>Sri Sathya Sai Seva Organisations, India</a>
     </mat-menu>
   </nav>
   <div class="header-wrapper">
@@ -42,9 +44,9 @@
     <div *ngIf="searched && centres.length === 0" class="no-results">
       <div>
         <i class="fas fa-info-circle"></i> 
-        No Balvikas Centres found in this combination of area and pincode ! Please check the inputs
+        {{constants.NO_CENTRE_MSG}}
       </div>
-      <h3> Please contact this helpline - {{ bvHelplineNumber }}</h3>
+      <h3> {{ constants.BV_HELPLINE_NUMBER }}</h3>
     </div>
   </div>
 </main>

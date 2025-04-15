@@ -116,6 +116,7 @@
     text-align: center;
     padding: 20px;
     color: #666;
+    font-size: large;
   }
   .results-card {
     display: flex;
@@ -200,7 +201,7 @@
   }
 
   .mat-button-toggle-appearance-standard {
-    background: #dee9f4;
+    background: #e6e6e6;
     width: 12.5em;
     height: 2.1em;
     font-size: large;
@@ -208,5 +209,5 @@
 
   .mat-button-toggle-appearance-standard.mat-button-toggle-checked {
     color: var(--mat-standard-button-toggle-selected-state-text-color, var(--mat-sys-on-secondary-container));
-    background-color: #6fc2cf;
+    background-color: rgb(6 148 172 / 53%);
   }
