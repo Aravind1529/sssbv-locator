@@ -58,8 +58,8 @@ export class SearchFormComponent {
   }
 
   searchByPincode() {
-    if (this.pincode) {
-      this.search.emit({pincode: this.pincode});
+    if (this.pincode.value) {
+      this.search.emit({pincode: this.pincode.value});
     } else {
       return;
     }
