@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { EducationCentre } from './models/education-centre.model';
 import { EducationCentreService } from './services/education-centre.service';
+import { AppConstants } from './shared/app.constants';
 
 export interface User {
   name: string;
@@ -17,10 +18,10 @@ export class AppComponent {
   title = 'sssbv-locator';
   centres: EducationCentre[] = [];
   searched = false;
-  bvHelplineNumber = '+91 44 4011 5500';
   value: any;
   districts: any;
-  
+  searchCriteria: string = 'Area';
+  constants = AppConstants;
 
   constructor(private educationCentreService: EducationCentreService) {
   }
@@ -30,16 +31,20 @@ export class AppComponent {
     this.educationCentreService.readJsonFromAssets();
   }
 
-  onSearch(searchData: {area: string, pincode: string, city: string}) {
-    this.educationCentreService.searchCentres(searchData.area, searchData.pincode, searchData.city)
+  onSearch(searchData: any) {
+    this.educationCentreService.searchCentres(searchData, this.searchCriteria)
       .subscribe(results => {
         this.centres = results;
         this.searched = true;
       });
   }
+
   reset() {
     this.centres = [];
     this.searched = false;
-    this.educationCentreService.selectedAreaHasValue$.next(false);
+  }
+
+  switchTab() {
+    this.educationCentreService.clearModels$.next(true);
   }
 }

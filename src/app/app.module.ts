@@ -22,6 +22,13 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { NgLabelTemplateDirective, NgOptionTemplateDirective, NgSelectComponent } from '@ng-select/ng-select';
+import {MatButton} from '@angular/material/button';
+import {MatTooltip} from '@angular/material/tooltip';
+import {MatIconModule} from '@angular/material/icon';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -48,6 +55,8 @@ import { NgLabelTemplateDirective, NgOptionTemplateDirective, NgSelectComponent 
     NgLabelTemplateDirective,
     NgOptionTemplateDirective,
     NgSelectComponent,
+    MatButton,
+    MatTooltip, MatButtonModule, MatDividerModule, MatIconModule, MatButtonToggleModule, MatMenuModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
   providers: [

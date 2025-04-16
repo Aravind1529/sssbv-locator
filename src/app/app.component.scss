@@ -39,7 +39,6 @@
     min-height: 62vh;
     display: flex;
     justify-content: center;
-    // align-items: center;
     padding: 1rem;
     box-sizing: inherit;
     position: relative;
@@ -95,21 +94,37 @@
     .bv-logo { 
       max-width: 8em !important;
     }
+
+    .mat-button-toggle-appearance-standard {
+      width: 13em !important;
+      height: 2.5em !important;
+      font-size: small !important;
+    }
+
+    .no-results {
+      font-size: small !important;
+    }
+
   }
+
   h1 {
     color: #057082;
     margin-bottom: 20px;
     text-align: center;
   }
+  
   .results h2 {
     margin-bottom: 20px;
     color: #333;
   }
+  
   .no-results {
     text-align: center;
     padding: 20px;
     color: #666;
+    font-size: large;
   }
+  
   .results-card {
     display: flex;
     flex-direction: row;
@@ -129,12 +144,12 @@
     text-align: center;
   }
 
-    .header-wrapper {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2em;
-    }
+  .header-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+  }
 
   .nav-bar {
     background-color: var(--primary-color);
@@ -142,6 +157,7 @@
     margin-bottom: 30px;
     align-items: center;
     display: flex;
+    justify-content: space-between;
     
     .a-link {
       color: white;
@@ -157,22 +173,18 @@
       margin-left: auto;
     }
   }
- 
 
   .home-icon {
     cursor: pointer;
     color: white;
   }
+
   .app-footer {
     display: flex;
     justify-content: space-between;
     margin: 0 25px;
     font-weight: 700;
     font-size: large;
-  }
-
-  .con-shape {
-    container-shape: base;
   }
 
   .example-form {
@@ -183,4 +195,22 @@
   
   .example-full-width {
     width: 100%;
+  }
+
+  .search-criteria {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3em;
+  }
+
+  .mat-button-toggle-appearance-standard {
+    background: #e6e6e6;
+    width: 12.5em;
+    height: 2.1em;
+    font-size: large;
+  }
+
+  .mat-button-toggle-appearance-standard.mat-button-toggle-checked {
+    color: var(--mat-standard-button-toggle-selected-state-text-color, var(--mat-sys-on-secondary-container));
+    background-color: rgb(6 148 172 / 53%);
   }
