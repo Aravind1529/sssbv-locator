@@ -6,7 +6,7 @@
       class="ng-select-areas" [(ngModel)]="selectedCity" (change)="onCitySelect()" />
     <ng-select #selectArea placeholder="Enter Area" [items]="filteredAreas" bindLabel="area" bindValue="area"
       [(ngModel)]="selectedArea" (change)="searchByArea()" class="ng-select-areas" [addTag]="true"
-      [disabled]="!selectedCity" />
+      [disabled]="!selectedCity" (clear)="onClearArea()"/>
     <button (click)="onSearch()" class="btn"
       [disabled]="(searchCriteria == 'Area' && (!this.selectedArea || !this.selectedCity))">
       <i class="fas fa-search"></i>

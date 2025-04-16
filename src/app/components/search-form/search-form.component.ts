@@ -88,4 +88,8 @@ export class SearchFormComponent {
     );
     this.filteredAreas = this.uniqueAreas.sort((a,b) => a.area.localeCompare(b.area));
   }
+
+  onClearArea() {
+    this.clearSearch.emit();
+  }
 }
