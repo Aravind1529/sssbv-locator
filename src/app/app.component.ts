@@ -23,12 +23,12 @@ export class AppComponent {
   searchCriteria: string = 'Area';
   constants = AppConstants;
 
-  constructor(private educationCentreService: EducationCentreService) {
+  constructor(private readonly educationCentreService: EducationCentreService) {
   }
   
   ngOnInit() {
-    // this.educationCentreService.getCentres();
-    this.educationCentreService.readJsonFromAssets();
+    this.educationCentreService.getCentres();
+    // this.educationCentreService.readJsonFromAssets();
   }
 
   onSearch(searchData: any) {
