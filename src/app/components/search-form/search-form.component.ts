@@ -5,6 +5,8 @@ import { EducationCentreService } from '../../services/education-centre.service'
 import { EMPTY, NEVER } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { EducationCentre } from '../../models/education-centre.model';
+import { CreateCentreDialogComponent } from '../create-centre-dialog/create-centre-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-search-form',
@@ -32,7 +34,7 @@ export class SearchFormComponent {
     Validators.pattern('^[1-9][0-9]{5}$')
   ]);
 
-  constructor(private educationService: EducationCentreService) {
+  constructor(private educationService: EducationCentreService, private dialog: MatDialog) {
     this.educationService.areas$.subscribe(x=> {
       this.areas = x;
       this.uniqueCities = [...new Set(this.areas.map(x => x.city))];
@@ -92,4 +94,5 @@ export class SearchFormComponent {
   onClearArea() {
     this.clearSearch.emit();
   }
+
 }

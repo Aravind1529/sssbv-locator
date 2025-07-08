@@ -28,6 +28,11 @@
         </mat-button-toggle-group>
       </p>
     </div>
+    <div>
+      <button mat-button (click)="openDialog()">Add</button>
+      <button mat-button (click)="editDialog()">Edit</button>
+      <button mat-button (click)="deleteDialog()">Delete</button>
+    </div>
     <app-search-form (search)="onSearch($event)" (clearSearch)="reset()" [searchCriteria]="searchCriteria"></app-search-form>
     
       <div class="results" *ngIf="centres.length > 0">

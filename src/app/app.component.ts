@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { EducationCentre } from './models/education-centre.model';
 import { EducationCentreService } from './services/education-centre.service';
 import { AppConstants } from './shared/app.constants';
+import { CreateCentreDialogComponent } from './components/create-centre-dialog/create-centre-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 export interface User {
   name: string;
@@ -23,7 +25,7 @@ export class AppComponent {
   searchCriteria: string = 'Area';
   constants = AppConstants;
 
-  constructor(private readonly educationCentreService: EducationCentreService) {
+  constructor(private readonly educationCentreService: EducationCentreService, private dialog: MatDialog) {
   }
   
   ngOnInit() {
@@ -46,5 +48,24 @@ export class AppComponent {
 
   switchTab() {
     this.educationCentreService.clearModels$.next(true);
+  }
+
+  openDialog(): void {
+    this.dialog.open(CreateCentreDialogComponent, {
+      width: '800px',
+      data: { message: 'Hello from parent!' }
+    });
+  }
+  editDialog(): void {
+    this.dialog.open(CreateCentreDialogComponent, {
+      width: '800px',
+      data: { message: 'Hello from parent!' }
+    });
+  }
+  deleteDialog(): void {
+    this.dialog.open(CreateCentreDialogComponent, {
+      width: '800px',
+      data: { message: 'Hello from parent!' }
+    });
   }
 }
