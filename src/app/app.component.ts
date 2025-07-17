@@ -27,8 +27,8 @@ export class AppComponent {
   }
   
   ngOnInit() {
-    // this.educationCentreService.getCentres();
-    this.educationCentreService.readJsonFromAssets();
+    this.educationCentreService.getCentres();
+    // this.educationCentreService.readJsonFromAssets();
   }
 
   onSearch(searchData: any) {
