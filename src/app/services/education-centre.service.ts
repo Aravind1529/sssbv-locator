@@ -16,17 +16,12 @@ export class EducationCentreService {
   private jsonUrl = 'assets/json/bvCentres.json';
 
   getCentres() {
-    // console.log(JSON.stringify(this.balvikasCentres));
     // this.getCentresURL = 'http://localhost:3000/api/centres';
-    
     this.getCentresURL = 'https://bv-locator-services.onrender.com/api/centres';
+
     this.http.get<EducationCentre[]>(this.getCentresURL).subscribe(
       (x) => {
-        // console.log('bv centres in cmse are: ', x);
         this.balvikasCentres= x;
-        this.balvikasCentres.map((x) => {
-          x.city = (x.district?.includes('Chennai ') || x.district?.includes('Thiruvallur ')) ? 'Chennai' : x.district;
-        });
         this.areas$.next(this.balvikasCentres);
       },
       (error) => {
