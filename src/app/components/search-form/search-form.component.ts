@@ -31,12 +31,16 @@ export class SearchFormComponent {
     Validators.required,
     Validators.pattern('^[1-9][0-9]{5}$')
   ]);
+  loading!: boolean;
 
   constructor(private educationService: EducationCentreService) {
     this.educationService.areas$.subscribe(x=> {
       this.areas = x;
       this.uniqueCities = [...new Set(this.areas.map(x => x.city))];
     });
+    this.educationService.loading$.subscribe(x=> {
+      this.loading = x;
+    })
     this.educationService.clearModels$.subscribe(isClearModel=> {
       if(isClearModel) {
         this.selectArea?.clearModel();

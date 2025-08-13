@@ -14,6 +14,7 @@ export class EducationCentreService {
   areas$ = new BehaviorSubject<any[]>([]);
   clearModels$ = new BehaviorSubject<boolean>(false);
   private jsonUrl = 'assets/json/bvCentres.json';
+  loading$ = new BehaviorSubject<boolean>(true);
 
   getCentres() {
     // this.getCentresURL = 'http://localhost:3000/api/centres';
@@ -23,9 +24,11 @@ export class EducationCentreService {
       (x) => {
         this.balvikasCentres= x;
         this.areas$.next(this.balvikasCentres);
+        this.loading$.next(false);
       },
       (error) => {
         console.error('Error fetching data:', error);
+        this.loading$.next(true);
       }
     );
   }

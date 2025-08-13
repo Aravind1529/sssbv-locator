@@ -1,5 +1,4 @@
-<div>
-
+<div *ngIf="!loading">
   <!-- Area Criteria  -->
   <div *ngIf="searchCriteria == 'Area'" class="search-container">
     <ng-select #selectCity placeholder="Enter City" [items]="uniqueCities" bindLabel="city" bindValue="city"
@@ -17,7 +16,6 @@
   <!-- Pincode Criteria -->
   <div *ngIf="searchCriteria == 'Pincode'" class="search-container">
     <input [formControl]="pincode" type="text" placeholder="Enter Pincode" class="input-field" (keyup.enter)="searchByPincode()"/>
-      <!-- [ngClass]="{ 'invalid-pincode-input': pincode.invalid && (pincode.dirty || pincode.value) }" -->
     <button (click)="onSearch()" class="btn" [disabled]="pincode.invalid">
       <i class="fas fa-search"></i>
       <span>Search</span>
@@ -28,4 +26,9 @@
   <p *ngIf="pincode.errors?.['required']">Pincode is required.</p>
   <p *ngIf="pincode.errors?.['pattern']">Invalid pincode format. Must be 6 digits starting with 1–9 with no space in
     between.</p>
+</div>
+<div *ngIf="loading" class="loading">
+  Welcome All Sairam ...
+  <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  <span class="sr-only">Loading...</span>
 </div>
