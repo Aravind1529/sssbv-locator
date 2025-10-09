@@ -14,43 +14,45 @@ export class EducationCentreService {
   areas$ = new BehaviorSubject<any[]>([]);
   clearModels$ = new BehaviorSubject<boolean>(false);
   private jsonUrl = 'assets/json/bvCentres.json';
+  loading$ = new BehaviorSubject<boolean>(true);
 
   getCentres() {
-    // console.log(JSON.stringify(this.balvikasCentres));
     // this.getCentresURL = 'http://localhost:3000/api/centres';
-    
     this.getCentresURL = 'https://bv-locator-services.onrender.com/api/centres';
+
     this.http.get<EducationCentre[]>(this.getCentresURL).subscribe(
       (x) => {
-        // console.log('bv centres in cmse are: ', x);
         this.balvikasCentres= x;
-        this.balvikasCentres.map((x) => {
-          x.city = (x.district?.includes('Chennai ') || x.district?.includes('Thiruvallur ')) ? 'Chennai' : x.district;
-        });
         this.areas$.next(this.balvikasCentres);
+        this.loading$.next(false);
       },
       (error) => {
         console.error('Error fetching data:', error);
+        this.loading$.next(true);
       }
     );
   }
 
   searchCentres(searchData: any, criteria: string): Observable<EducationCentre[]> {
-    if(criteria == 'Area') {
-      return of(
-        this.balvikasCentres.filter(
-          (centre) =>
-            centre.area?.toLowerCase().includes(searchData.area?.toLowerCase()) &&
-            centre.city?.includes(searchData.city)
-        )
+    if (criteria == 'Area') {
+      const filteredCentres = this.balvikasCentres.filter(
+        (centre) =>
+          centre.area?.toLowerCase().includes(searchData.area?.toLowerCase()) &&
+          centre.city?.includes(searchData.city)
       );
+      const uniqueByAddress = filteredCentres.filter(
+        (obj, index, self) =>
+          index === self.findIndex((t) => t.address === obj.address)
+      );
+      return of(uniqueByAddress);
     } else {
-      return of(
-        this.balvikasCentres.filter(
-          (centre) =>
+      return of([
+        ...new Set(
+          this.balvikasCentres.filter((centre) =>
             centre.pincode?.includes(searchData.pincode)
-        )
-      );
+          )
+        ),
+      ]);
     }
   }
 
