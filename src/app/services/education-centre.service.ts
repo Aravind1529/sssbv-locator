@@ -34,21 +34,25 @@ export class EducationCentreService {
   }
 
   searchCentres(searchData: any, criteria: string): Observable<EducationCentre[]> {
-    if(criteria == 'Area') {
-      return of(
-        this.balvikasCentres.filter(
-          (centre) =>
-            centre.area?.toLowerCase().includes(searchData.area?.toLowerCase()) &&
-            centre.city?.includes(searchData.city)
-        )
+    if (criteria == 'Area') {
+      const filteredCentres = this.balvikasCentres.filter(
+        (centre) =>
+          centre.area?.toLowerCase().includes(searchData.area?.toLowerCase()) &&
+          centre.city?.includes(searchData.city)
       );
+      const uniqueByAddress = filteredCentres.filter(
+        (obj, index, self) =>
+          index === self.findIndex((t) => t.address === obj.address)
+      );
+      return of(uniqueByAddress);
     } else {
-      return of(
-        this.balvikasCentres.filter(
-          (centre) =>
+      return of([
+        ...new Set(
+          this.balvikasCentres.filter((centre) =>
             centre.pincode?.includes(searchData.pincode)
-        )
-      );
+          )
+        ),
+      ]);
     }
   }
 
