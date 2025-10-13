@@ -29,6 +29,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import {MatButtonModule} from '@angular/material/button';
     NgOptionTemplateDirective,
     NgSelectComponent,
     MatButton,
-    MatTooltip, MatButtonModule, MatDividerModule, MatIconModule, MatButtonToggleModule, MatMenuModule
+    MatTooltip, MatButtonModule, MatDividerModule, MatIconModule, MatButtonToggleModule, MatMenuModule,
+    MatDialogModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
   providers: [

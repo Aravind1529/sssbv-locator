@@ -1,0 +1,46 @@
+mat-form-field {
+  width: 100%;
+}
+mat-dialog-content {
+  max-height: 400px;
+  overflow: auto;
+}
+
+// ***********
+
+.dialog-container {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  min-width: 380px;
+  max-width: 500px;
+}
+
+.dialog-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: #1976d2; /* Sai-blue */
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.title-icon {
+  color: #1976d2;
+}
+
+.dialog-content {
+  padding-top: 12px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.dialog-actions {
+  border-top: 1px solid #e0e0e0;
+  padding-top: 10px;
+  margin-top: 8px;
+}
