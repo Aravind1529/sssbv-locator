@@ -34,6 +34,24 @@ export class EducationCentreService {
     );
   }
 
+  createCentre(centre: EducationCentre) {
+    // API endpoint (adjust if your backend uses a different route)
+    const createURL = `${AppConstants.BASE_URL}/api/create-centre`;
+    this.clearCentres$.next(true);
+    this.clearModels$.next(true);
+    this.loading$.next(true);
+    this.http.post<EducationCentre>(createURL, centre).subscribe(
+      (createdCentre) => {
+        this.loading$.next(false);
+        this.getCentres();
+        console.log('Centre created successfully:', createdCentre);
+      },
+      (error) => {
+        console.error('Error updating centre:', error);
+      }
+    );
+  }
+
   updateCentre(centre: EducationCentre) {
     // API endpoint (adjust if your backend uses a different route)
     const updateURL = `${AppConstants.BASE_URL}/api/centre/${centre.id}`;
@@ -43,6 +61,7 @@ export class EducationCentreService {
     this.http.put<EducationCentre>(updateURL, centre).subscribe(
       (updatedCentre) => {
         this.loading$.next(false);
+        this.getCentres();
         console.log('Centre updated successfully:', updatedCentre);
       },
       (error) => {
