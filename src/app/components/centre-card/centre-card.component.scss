@@ -59,3 +59,10 @@
       font-size: small;
     }
   }
+
+    .action-icons-wrapper {
+      justify-content: right;
+      display: flex;
+      gap: 2em;
+      margin: 10px 0px;
+    }
