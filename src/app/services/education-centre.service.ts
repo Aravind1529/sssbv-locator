@@ -34,7 +34,7 @@ export class EducationCentreService {
     );
   }
 
-  createCentre(centre: EducationCentre) {
+  createCentre(centre: any) {
     // API endpoint (adjust if your backend uses a different route)
     const createURL = `${AppConstants.BASE_URL}/api/create-centre`;
     this.clearCentres$.next(true);
@@ -52,7 +52,7 @@ export class EducationCentreService {
     );
   }
 
-  updateCentre(centre: EducationCentre) {
+  updateCentre(centre: any) {
     // API endpoint (adjust if your backend uses a different route)
     const updateURL = `${AppConstants.BASE_URL}/api/centre/${centre.id}`;
     this.clearCentres$.next(true);

@@ -30,18 +30,41 @@ export class EditDialogComponent {
   saiDistrictsTNN = ["Chennai North West", "Mayiladuthurai", "Thiruvallur West", "Pondicherry", "Thiruvallur East", "Chennai South", "Chennai North", "Chennai South East", "Chennai East Coast", "Cuddalore", "Chennai West", "Nagai"];
   saiState = ["TamilNadu North", "TamilNadu South"];
   saiDistricts!: string[];
+  isEditMode = false;
+  centreData = {
+    centreName: '',
+    samithiName: '',
+    city: '',
+    state: '',
+    district: '',
+    area: '',
+    address: '',
+    pincode: '',
+    convenorName: '',
+    convenorContact: '',
+    ecName: '',
+    ecContact: '',
+    googleMapLink: ''
+  };
  constructor(
     public dialogRef: MatDialogRef<EditDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private educationCentreService: EducationCentreService
   ) {
   }
+  
+  ngOnInit() {
+    if (this.data?.centre) {
+      this.isEditMode = true;
+      this.centreData = { ...this.data.centre }; // clone to avoid mutating parent
+    }
+  }
 
   save() {
     if(this.data.isCreateCentre) {
-      this.educationCentreService.createCentre(this.data);
+      this.educationCentreService.createCentre(this.centreData);
     } else {
-      this.educationCentreService.updateCentre(this.data);
+      this.educationCentreService.updateCentre(this.centreData);
     }
     this.dialogRef.close(this.data); 
   }

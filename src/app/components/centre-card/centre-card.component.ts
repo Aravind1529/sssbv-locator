@@ -23,7 +23,6 @@ export class CentreCardComponent {
   ) {}
 
   openEditDialog(centre: any) {
-    console.log(centre);
     const dialogRef = this.dialog.open(EditDialogComponent, {
       width: '500px',
       data: { centre: {...centre},  isCreateCentre: false},

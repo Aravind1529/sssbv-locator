@@ -6,7 +6,6 @@ import { EMPTY, NEVER } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { EducationCentre } from '../../models/education-centre.model';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { CreateCentreDialogComponent } from '../create-centre-dialog/create-centre-dialog.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
