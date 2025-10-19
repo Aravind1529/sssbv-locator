@@ -24,9 +24,6 @@ export class AppComponent {
   constants = AppConstants;
 
   constructor(private educationCentreService: EducationCentreService) {
-    this.educationCentreService.clearCentres$.subscribe(x=> {
-      this.reset();
-    })
   }
   
   ngOnInit() {
