@@ -5,18 +5,11 @@ import { EducationCentreService } from '../../services/education-centre.service'
 import { EMPTY, NEVER } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { EducationCentre } from '../../models/education-centre.model';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { MatButtonModule } from '@angular/material/button';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
 
 @Component({
   selector: 'app-search-form',
   standalone: true,
-  imports: [FormsModule,NgSelectComponent, CommonModule, ReactiveFormsModule,
-    MatDialogModule, MatFormFieldModule, MatInputModule, MatButtonModule
-   ],
+  imports: [FormsModule,NgSelectComponent, CommonModule, ReactiveFormsModule ],
   templateUrl: './search-form.component.html',
   styleUrl: './search-form.component.scss'
 })
@@ -40,10 +33,10 @@ export class SearchFormComponent {
   ]);
   loading!: boolean;
 
-  constructor(private educationService: EducationCentreService, private dialog: MatDialog) {
+  constructor(private educationService: EducationCentreService) {
     this.educationService.areas$.subscribe(x=> {
       this.areas = x;
-      this.uniqueCities = [...new Set(this.areas.map(x => x.city))].sort();
+      this.uniqueCities = [...new Set(this.areas.map(x => x.city))];
     });
     this.educationService.loading$.subscribe(x=> {
       this.loading = x;
@@ -102,18 +95,5 @@ export class SearchFormComponent {
 
   onClearArea() {
     this.clearSearch.emit();
-  }
-
-  openCreateDialog() {
-    const dialogRef = this.dialog.open(EditDialogComponent, {
-      width: '500px',
-      data: { isCreateCentre: true } 
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        console.log('Form result:', result);
-      }
-    });
   }
 }

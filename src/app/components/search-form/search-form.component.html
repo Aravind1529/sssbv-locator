@@ -21,10 +21,6 @@
       <span>Search</span>
     </button>
   </div>
-  <button (click)="openCreateDialog()" class="btn">
-    <i class="fas fa-plus-square fas-2x"></i>
-    <span>Add New BV Centre</span>
-  </button>
 </div>
 <div *ngIf="searchCriteria == 'Pincode' && (pincode.dirty || pincode.value)" class="pincode-error">
   <p *ngIf="pincode.errors?.['required']">Pincode is required.</p>

@@ -2,8 +2,28 @@
     <div class="header">
       <h3>{{ centre.centreName }}</h3>
       <h3>{{centre.samithiName}}</h3>
+      <!-- <div class="rating">
+        <i class="fas fa-star"></i>
+        <span>{{ centre.rating.toFixed(1) }}</span>
+      </div> -->
     </div>
     <div class="details">
+      <!-- <p class="detail-item">
+        <i class="fas fa-user"></i>
+        <span>Balvikas Guru - {{ centre.guruName }} ({{ centre.guruContactNumber }})</span>
+      </p> -->
+      <!-- <p *ngIf="centre.type" class="detail-item">
+        <i class="fas fa-tag"></i>
+        <span>{{ centre.type }}</span>
+      </p> -->
+      <!-- <p class="detail-item">
+        <i class="fas fa-phone"></i>
+        <span>{{ centre.guruContactNumber }}</span>
+      </p> -->
+      <!-- <p class="detail-item">
+        <i class="fas fa-location-dot"></i>
+        <span>{{ centre.area }} - {{ centre.pincode }}</span>
+      </p> -->
       <p class="detail-item">
         <i class="fas fa-map-marker-alt"></i>
         <span>{{ centre.address }}</span>
@@ -23,9 +43,5 @@
         <i class="fas fa-map-marker-alt"></i>
         <a [href]="centre.googleMapLink" target="_blank">{{centre.googleMapLink}}</a>
       </p>
-      <div class="action-icons-wrapper">
-        <i class="fas fa-edit" style="color: #120b7a;" (click)="openEditDialog(centre)"></i>
-        <i class="fa-solid fa-trash" style="color: #950925;"  (click)="openDeleteDialog(centre)"></i>
-      </div>
     </div>
   </div>
