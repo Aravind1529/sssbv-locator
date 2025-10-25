@@ -30,6 +30,8 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     HttpClientModule,
     CommonModule,
     SearchFormComponent, 
+    DashboardComponent,
+    LoginComponent,
     CentreCardComponent,
     MatSlideToggleModule,
     BrowserAnimationsModule,
