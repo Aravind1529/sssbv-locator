@@ -17,18 +17,6 @@ export class AuthService {
   }
 
   login(credentials: { email: string; password: string }) {
-    // Replace this with your actual API
-    // return this.http.post<{ token: string }>('https://your-api.com/login', credentials)
-    //   .subscribe({
-    //     next: (res) => {
-    //       this.setSession(res.token);
-    //       this.isLoggedIn$.next(true);
-    //       this.router.navigate(['/dashboard']); // redirect after login
-    //     },
-    //     error: (err) => {
-    //       console.error('Login failed', err);
-    //     }
-    //   });
     if (
       credentials.email == 'bvadmin' &&
       credentials.password == 'bvadmin@1926'
