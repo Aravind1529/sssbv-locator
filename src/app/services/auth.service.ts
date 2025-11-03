@@ -11,7 +11,6 @@ export class AuthService {
   private logoutTimer?: Subscription;
 
   isLoggedIn$ = new BehaviorSubject<boolean>(this.hasValidToken());
-
   constructor(private http: HttpClient, private router: Router) {
     this.startSessionWatcher();
   }
@@ -22,13 +21,14 @@ export class AuthService {
       credentials.password == 'bvadmin@1926'
     ) {
       this.setSession("loggedIn");
+      localStorage.setItem('user', credentials.email);
+      localStorage.setItem('role', 'decTrichy');
       this.isLoggedIn$.next(true);
       this.router.navigate(['/home']); // redirect after login
       return of('logged in');
     } else {
       this.isLoggedIn$.next(false);
-      localStorage.removeItem(this.tokenKey);
-      localStorage.removeItem(this.expiryKey);
+      this.clearLocalStorage();
       console.error('login failed');
       return of('null');
     } 
@@ -59,13 +59,19 @@ export class AuthService {
   }
 
   logout() {
-    localStorage.removeItem(this.tokenKey);
-    localStorage.removeItem(this.expiryKey);
+    this.clearLocalStorage();
     this.isLoggedIn$.next(false);
-    this.router.navigate(['/login']);
+    alert('Logged out')
   }
-
+  
   getToken(): string | null {
     return localStorage.getItem(this.tokenKey);
+  }
+  
+  clearLocalStorage() {
+    localStorage.removeItem(this.tokenKey);
+    localStorage.removeItem(this.expiryKey);
+    localStorage.removeItem('user');
+    localStorage.removeItem('role');
   }
 }

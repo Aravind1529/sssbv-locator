@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,7 @@ export class LoginComponent {
   password = '';
   errorMessage = '';
 
-  constructor(private auth: AuthService) {}
+  constructor(private auth: AuthService, public dialogRef: MatDialogRef<LoginComponent>) {}
 
   onLogin() {
     if (!this.username || !this.password) {
@@ -31,6 +32,7 @@ export class LoginComponent {
        console.log(message);
        if (message.includes('logged in')) {
           this.errorMessage = '';
+          this.dialogRef.close('logged in'); 
         } else {
           this.errorMessage = 'Invalid credentials. Please try again.';
         }

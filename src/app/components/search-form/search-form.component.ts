@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-search-form',
@@ -39,8 +40,9 @@ export class SearchFormComponent {
     Validators.pattern('^[1-9][0-9]{5}$')
   ]);
   loading!: boolean;
+  isDEC!: boolean;
 
-  constructor(private educationService: EducationCentreService, private dialog: MatDialog) {
+  constructor(private educationService: EducationCentreService, private dialog: MatDialog, private authService: AuthService) {
     this.educationService.areas$.subscribe(x=> {
       this.areas = x;
       this.uniqueCities = [...new Set(this.areas.map(x => x.city))].sort();
@@ -55,6 +57,9 @@ export class SearchFormComponent {
         this.pincode.setValue(null);
       }
     });
+    this.authService.isLoggedIn$.subscribe((x) => {
+        this.isDEC = x;
+      });
   }
 
   onSearch() {

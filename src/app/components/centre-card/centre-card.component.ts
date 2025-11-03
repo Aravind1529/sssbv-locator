@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
 import { EducationCentreService } from '../../services/education-centre.service';
 import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
+import { AuthService } from '../../services/auth.service';
 
 
 @Component({
@@ -16,11 +17,17 @@ import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component'
 })
 export class CentreCardComponent {
   @Input() centre!: EducationCentre;
+  isDEC!: boolean;
 
   constructor(
     private dialog: MatDialog,
-    private educationCentreService: EducationCentreService
-  ) {}
+    private educationCentreService: EducationCentreService,
+    private authService: AuthService
+  ) {
+      this.authService.isLoggedIn$.subscribe((x) => {
+        this.isDEC = x;
+      });
+  }
 
   openEditDialog(centre: any) {
     const dialogRef = this.dialog.open(EditDialogComponent, {
