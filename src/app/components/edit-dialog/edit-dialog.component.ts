@@ -56,7 +56,7 @@ export class EditDialogComponent {
   ngOnInit() {
     if (this.data?.centre) {
       this.isEditMode = true;
-      this.centreData = { ...this.data.centre }; // clone to avoid mutating parent
+      this.centreData = { ...this.data.centre };
     }
   }
 

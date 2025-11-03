@@ -21,7 +21,7 @@
       <span>Search</span>
     </button>
   </div>
-  <button (click)="openCreateDialog()" class="btn">
+  <button *ngIf="isDEC" (click)="openCreateDialog()" class="btn">
     <i class="fas fa-plus-square fas-2x"></i>
     <span>Add New BV Centre</span>
   </button>

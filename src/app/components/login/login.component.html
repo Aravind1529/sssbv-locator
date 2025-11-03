@@ -1,0 +1,31 @@
+<div class="login-wrapper">
+  <div class="logo-section">
+    <h3 class="login-title">DEC Login</h3>
+    <p class="login-subtitle">Please sign in to continue</p>
+  </div>
+
+  <form (ngSubmit)="onLogin()" #loginForm="ngForm" class="login-form">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Username</mat-label>
+      <input matInput [(ngModel)]="username" name="username" (input)="onInputChange()" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" [(ngModel)]="password" name="password" (input)="onInputChange()" required>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" class="login-btn" [disabled]="!loginForm.valid">
+      Login
+    </button>
+
+    <!-- 🌸 Error message -->
+    <div class="error-message" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+  </form>
+
+  <!-- <div class="login-footer">
+    <p>Don’t have an account? <a routerLink="/register">Register</a></p>
+  </div> -->
+</div>

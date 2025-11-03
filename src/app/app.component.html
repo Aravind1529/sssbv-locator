@@ -1,13 +1,18 @@
 <header>
   <nav class="nav-bar">
-    <i class="fa fa-home fa-lg home-icon" aria-hidden="true" (click)="reset();switchTab()"></i>
-    <button mat-button [matMenuTriggerFor]="menu" class="about-menu">About</button>
+    <!-- <i class="fa fa-home fa-lg home-icon" aria-hidden="true" (click)="reset();switchTab()"></i> -->
+    <!-- <button mat-button [matMenuTriggerFor]="menu" class="about-menu">About</button> -->
+    <!-- <i class="fa fa-sign-in fa-lg" style="color: white" aria-hidden="true" (click)="login()"></i> -->
+    
+    <i class="fa-solid fa-bars fa-lg home-icon" [matMenuTriggerFor]="menu" aria-hidden="true" (click)="reset();switchTab()"></i>
+    <i class="fa-solid fa-power-off fa-lg sign-in-btn" aria-hidden="true" (click)="authenticateUser()"></i>
+    
     <mat-menu #menu="matMenu">
-      <!-- <a href="https://www.sssbalvikas.in" target="_blank" mat-menu-item>Sri Sathya Sai Balvikas</a> -->
       <a [href]="constants.SSSBV_URL" target="_blank" mat-menu-item>Sri Sathya Sai Balvikas</a>
       <a [href]="constants.TN_ORG_URL" target="_blank" mat-menu-item>Sri Sathya Sai Seva Organisations, TamilNadu</a>
       <a [href]="constants.INDIA_ORG_URL" target="_blank" mat-menu-item>Sri Sathya Sai Seva Organisations, India</a>
     </mat-menu>
+
   </nav>
   <div class="header-wrapper">
     <img
@@ -18,43 +23,7 @@
     <h1>Sri Sathya Sai Balvikas Locator</h1>
   </div>
 </header>
-<main class="main">
-  <div class="container">
-    <div class="search-criteria">
-      <p>
-        <mat-button-toggle-group name="searchCriteria" [(ngModel)]="searchCriteria" aria-label="Font Style">
-          <mat-button-toggle (click)="reset();switchTab()" value="Area" matTooltip="You can search">Search with AREA</mat-button-toggle>
-          <mat-button-toggle (click)="reset();switchTab()" value="Pincode">Search with PINCODE</mat-button-toggle>
-        </mat-button-toggle-group>
-      </p>
-    </div>
-    <app-search-form (search)="onSearch($event)" (clearSearch)="reset()" [searchCriteria]="searchCriteria"></app-search-form>
-    
-      <div class="results" *ngIf="centres.length > 0">
-        <h3>Found {{ centres.length }} centre(s)</h3>
-        <div class="results-card">
-        <app-centre-card 
-        class="card-width"
-        *ngFor="let centre of centres"
-        [centre]="centre"
-        ></app-centre-card>
-      </div>
-    </div>
-    
-    <div *ngIf="searched && centres.length === 0" class="no-results">
-      <div>
-        <i class="fas fa-info-circle"></i> 
-        {{constants.NO_CENTRE_MSG}}
-      </div>
-      <h3> {{ constants.BV_HELPLINE_NUMBER }}</h3>
-    </div>
-  </div>
-</main>
-<footer>
-  <div class="app-footer">
-    <p>"End of Education is Character" - BABA</p>
-    <p>"Educare is the Veda of 21st Century" - BABA</p>
-  </div>
-</footer>
+<div  class="dashboard-wrapper">
+  <app-dashboard></app-dashboard>
 
-<router-outlet />
+</div>
