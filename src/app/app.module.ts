@@ -32,6 +32,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,14 @@ import { LoginComponent } from './components/login/login.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-right',
+      // timeOut: 3000,
+      progressBar: true,
+      closeButton: true,
+      preventDuplicates: true,
+    }),
     AppRoutingModule,
     HttpClientModule,
     CommonModule,
@@ -47,7 +56,6 @@ import { LoginComponent } from './components/login/login.component';
     LoginComponent,
     CentreCardComponent,
     MatSlideToggleModule,
-    BrowserAnimationsModule,
     ButtonModule,
     AutoCompleteModule,
     FormsModule,
