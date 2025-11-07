@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { AuthService } from './services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from './components/login/login.component';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { ToastrService } from 'ngx-toastr';
 
 export interface User {
   name: string;
@@ -30,7 +32,8 @@ export class AppComponent {
   constructor(
     private educationCentreService: EducationCentreService,
     private authService: AuthService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private toastr: ToastrService
   ) {
     this.educationCentreService.clearCentres$.subscribe((x) => {
       this.reset();
@@ -61,7 +64,7 @@ export class AppComponent {
 
   authenticateUser() {
     if (localStorage.getItem('auth_token')) {
-      this.authService.logout();
+      this.openConfirmDialog();
     } else {
       const dialogRef = this.dialog.open(LoginComponent, {
         width: '400px',
@@ -69,10 +72,28 @@ export class AppComponent {
 
       dialogRef.afterClosed().subscribe((result) => {
         if (result && localStorage.getItem('role')?.includes('dec')) {
-          alert('Logged in as DEC');
+          // alert('Logged in as DEC');
+          this.toastr.success('Logged in as DEC !');
         }
       });
       // this.educationCentreService.clearModels$.next(true);
     }
+  }
+  
+  openConfirmDialog() {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '350px',
+      data: { message: 'Are you sure you want to logout ?' }
+    });
+    
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.authService.logout();
+        this.toastr.info('Logged out !');
+        // perform delete or other action
+      } else {
+        console.log('User cancelled logout');
+      }
+    });
   }
 }

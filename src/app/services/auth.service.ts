@@ -61,7 +61,6 @@ export class AuthService {
   logout() {
     this.clearLocalStorage();
     this.isLoggedIn$.next(false);
-    alert('Logged out')
   }
   
   getToken(): string | null {

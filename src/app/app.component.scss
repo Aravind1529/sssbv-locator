@@ -215,7 +215,17 @@
     background-color: rgb(6 148 172 / 53%);
   }
 
-  .sign-in-btn {
-    color: white;
-    cursor: pointer;
-  }
+    .sign-in-btn {
+      color: white;
+      cursor: pointer;
+    }
+  
+    .snackbar-success {
+      background-color: #4CAF50 !important;
+      color: white;
+    }
+  
+    .snackbar-error {
+      background-color: #f44336 !important;
+      color: white;
+    }
