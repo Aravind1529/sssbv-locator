@@ -24,7 +24,6 @@ export class AuthService {
       localStorage.setItem('user', credentials.email);
       localStorage.setItem('role', 'decTrichy');
       this.isLoggedIn$.next(true);
-      this.router.navigate(['/home']); // redirect after login
       return of('logged in');
     } else {
       this.isLoggedIn$.next(false);

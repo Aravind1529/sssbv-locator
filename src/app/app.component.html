@@ -5,6 +5,7 @@
     <!-- <i class="fa fa-sign-in fa-lg" style="color: white" aria-hidden="true" (click)="login()"></i> -->
     
     <i class="fa-solid fa-bars fa-lg home-icon" [matMenuTriggerFor]="menu" aria-hidden="true" (click)="reset();switchTab()"></i>
+    <h5 style="color:white">Aum Sri Sairam</h5>
     <i class="fa-solid fa-power-off fa-lg sign-in-btn" aria-hidden="true" (click)="authenticateUser()"></i>
     
     <mat-menu #menu="matMenu">
@@ -23,7 +24,8 @@
     <h1>Sri Sathya Sai Balvikas Locator</h1>
   </div>
 </header>
-<div  class="dashboard-wrapper">
+<router-outlet></router-outlet>
+<!-- <div  class="dashboard-wrapper">
   <app-dashboard></app-dashboard>
 
-</div>
+</div> -->
