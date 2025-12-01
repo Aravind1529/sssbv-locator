@@ -247,12 +247,19 @@
   }
   
   .mat-toolbar {
-    background-color: rgb(6 148 172 / 53%) !important;  
+    background-color: var(--primary-color);  
     color: white;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding: 0px 5px;
+
+    mat-icon {
+      color: white;
+      // height: 35px;
+      // width: 35px;
+      font-size: xx-large;
+    }
   }
   
   .content {
@@ -262,10 +269,17 @@
   }
 
   .active-link {
-    background-color: #dad9d9;
+    background-color: #dad9d999;
     font-weight: 600;
+    color: white;
   }
 
   .mat-drawer {
     border-radius: 1px !important;
+  }
+
+  mat-nav-list {
+    a {
+      color: white; 
+    }
   }

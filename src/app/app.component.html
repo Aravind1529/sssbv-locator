@@ -38,15 +38,19 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <button mat-icon-button (click)="drawer.toggle()">
+    <mat-toolbar>
+      <!-- <button mat-icon-button (click)="drawer.toggle()">
         <mat-icon>menu</mat-icon>
-      </button>
+      </button> -->
       <!-- <span>Sri Sathya Sai Balvikas Locator App</span> -->
-          <!-- <i class="fa-solid fa-bars fa-lg home-icon" [matMenuTriggerFor]="menu" aria-hidden="true" (click)="reset();switchTab()"></i> -->
+          <i class="fa-solid fa-bars fa-lg home-icon" [matMenuTriggerFor]="menu" aria-hidden="true" (click)="reset();switchTab()"></i>
     <h5 style="color:white">Aum Sri Sairam</h5>
     <i class="fa-solid fa-power-off fa-lg sign-in-btn" aria-hidden="true" (click)="authenticateUser()"></i>
-    
+    <mat-menu #menu="matMenu">
+      <a [href]="constants.SSSBV_URL" target="_blank" mat-menu-item>Sri Sathya Sai Balvikas</a>
+      <a [href]="constants.TN_ORG_URL" target="_blank" mat-menu-item>Sri Sathya Sai Seva Organisations, TamilNadu</a>
+      <a [href]="constants.INDIA_ORG_URL" target="_blank" mat-menu-item>Sri Sathya Sai Seva Organisations, India</a>
+    </mat-menu>
     </mat-toolbar>
     <div class="header-wrapper">
       <img src="assets/images/balvikas-logo.jpg" alt="Balvikas Logo" class="bv-logo" />
