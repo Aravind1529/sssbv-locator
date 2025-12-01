@@ -1,8 +1,5 @@
-<header>
-  <nav class="nav-bar">
-    <!-- <i class="fa fa-home fa-lg home-icon" aria-hidden="true" (click)="reset();switchTab()"></i> -->
-    <!-- <button mat-button [matMenuTriggerFor]="menu" class="about-menu">About</button> -->
-    <!-- <i class="fa fa-sign-in fa-lg" style="color: white" aria-hidden="true" (click)="login()"></i> -->
+<!-- <header>
+  <nav class="nav-bar"> 
     
     <i class="fa-solid fa-bars fa-lg home-icon" [matMenuTriggerFor]="menu" aria-hidden="true" (click)="reset();switchTab()"></i>
     <h5 style="color:white">Aum Sri Sairam</h5>
@@ -24,8 +21,43 @@
     <h1>Sri Sathya Sai Balvikas Locator</h1>
   </div>
 </header>
-<router-outlet></router-outlet>
+<router-outlet></router-outlet> -->
 <!-- <div  class="dashboard-wrapper">
   <app-dashboard></app-dashboard>
 
 </div> -->
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" mode="side">
+    <!-- <mat-toolbar color="primary">Menu</mat-toolbar> -->
+    <mat-nav-list>
+      <a mat-list-item routerLink="/dashboard" routerLinkActive="active-link" (click)="drawer.toggle()">Dashboard</a>
+      <a mat-list-item routerLink="/bvCentresList" routerLinkActive="active-link" (click)="drawer.toggle()">Filter by Samithi</a>
+      <a mat-list-item routerLink="/page2" routerLinkActive="active-link" (click)="drawer.toggle()">Page 2</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar>
+      <!-- <button mat-icon-button (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button> -->
+      <!-- <span>Sri Sathya Sai Balvikas Locator App</span> -->
+          <i class="fa-solid fa-bars fa-lg home-icon" [matMenuTriggerFor]="menu" aria-hidden="true" (click)="reset();switchTab()"></i>
+    <h5 style="color:white">Aum Sri Sairam</h5>
+    <i class="fa-solid fa-power-off fa-lg sign-in-btn" aria-hidden="true" (click)="authenticateUser()"></i>
+    <mat-menu #menu="matMenu">
+      <a [href]="constants.SSSBV_URL" target="_blank" mat-menu-item>Sri Sathya Sai Balvikas</a>
+      <a [href]="constants.TN_ORG_URL" target="_blank" mat-menu-item>Sri Sathya Sai Seva Organisations, TamilNadu</a>
+      <a [href]="constants.INDIA_ORG_URL" target="_blank" mat-menu-item>Sri Sathya Sai Seva Organisations, India</a>
+    </mat-menu>
+    </mat-toolbar>
+    <div class="header-wrapper">
+      <img src="assets/images/balvikas-logo.jpg" alt="Balvikas Logo" class="bv-logo" />
+      <h1>Sri Sathya Sai Balvikas Locator</h1>
+    </div>
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
