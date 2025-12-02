@@ -1,68 +1,77 @@
 .education-centre-card {
-    border-left: 4px solid var(--primary-color);
-  }
+  border-left: 4px solid var(--primary-color);
+}
 
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background-color: #fff9e6;
+  border-radius: 16px;
+  font-weight: bold;
+}
+
+.rating i {
+  color: #ffd700;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: larger;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-color);
+}
+
+.detail-item i {
+  min-width: 20px;
+  color: var(--primary-color);
+}
+
+@media (max-width: 768px) {
   .header {
-    display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
-    margin-bottom: 16px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid var(--border-color);
+    gap: 12px;
   }
 
   .rating {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 6px 12px;
-    background-color: #fff9e6;
-    border-radius: 16px;
-    font-weight: bold;
-  }
-
-  .rating i {
-    color: #ffd700;
+    align-self: flex-end;
   }
 
   .details {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    font-size: larger;
+    font-size: small;
   }
+}
 
-  .detail-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    color: var(--text-color);
-  }
+.action-icons-wrapper {
+  justify-content: right;
+  display: flex;
+  gap: 2em;
+  margin: 10px 0px;
+}
 
-  .detail-item i {
-    min-width: 20px;
-    color: var(--primary-color);
-  }
-
-  @media (max-width: 768px) {
-    .header {
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .rating {
-      align-self: flex-end;
-    }
-    .details {
-      font-size: small;
-    }
-  }
-
-    .action-icons-wrapper {
-      justify-content: right;
-      display: flex;
-      gap: 2em;
-      margin: 10px 0px;
-    }
+.google-map-link {
+  display: inline-block;
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

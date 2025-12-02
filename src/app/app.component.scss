@@ -36,7 +36,7 @@
 
   main {
     width: 100%;
-    min-height: 62vh;
+    min-height: calc(100vh - 130px);
     display: flex;
     justify-content: center;
     padding: 1rem;
@@ -46,8 +46,7 @@
 
   @media screen and (max-width: 650px) {
     .content {
-      flex-direction: column;
-      width: max-content;
+      padding: 15px !important;
     }
 
     .header-wrapper {
@@ -108,6 +107,7 @@
     .search-criteria {
       flex-direction: column; 
     }
+
   }
 
   h1 {
@@ -133,10 +133,6 @@
     flex-direction: row;
     gap: 5em;
     flex-wrap: wrap;
-  }
-
-  .card-width {
-    width: 30rem;
   }
 
   .bv-logo {
@@ -253,11 +249,10 @@
     flex-direction: row;
     justify-content: space-between;
     padding: 0px 5px;
+    height: 40px;
 
     mat-icon {
       color: white;
-      // height: 35px;
-      // width: 35px;
       font-size: xx-large;
     }
   }
@@ -265,7 +260,6 @@
   .content {
     padding: 20px;
     background-color: #f3f8ff;
-    min-height: calc(100vh - 64px);
   }
 
   .active-link {
