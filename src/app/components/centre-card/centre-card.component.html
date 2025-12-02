@@ -21,7 +21,7 @@
       </p>
       <p class="detail-item" *ngIf="centre.googleMapLink">
         <i class="fas fa-map-marker-alt"></i>
-        <a [href]="centre.googleMapLink" target="_blank">{{centre.googleMapLink}}</a>
+        <a class="google-map-link" [href]="centre.googleMapLink" target="_blank">{{centre.googleMapLink}}</a>
       </p>
       <div class="action-icons-wrapper" *ngIf="isDEC">
         <i class="fas fa-edit" style="color: #120b7a;" (click)="openEditDialog(centre)"></i>
