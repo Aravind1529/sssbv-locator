@@ -168,6 +168,9 @@
     .about-menu span.mdc-button__label {
       font-size: medium;
     }
+    body {
+      width: fit-content;
+    }
   }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
@@ -195,4 +198,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .about-menu span.mdc-button__label {
   color: white !important; 
   font-size: large;
+}
+
+.toast-info {
+  background-color: #e2923c !important;
+  color: white !important;
 }

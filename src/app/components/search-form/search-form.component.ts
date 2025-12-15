@@ -5,11 +5,19 @@ import { EducationCentreService } from '../../services/education-centre.service'
 import { EMPTY, NEVER } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { EducationCentre } from '../../models/education-centre.model';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-search-form',
   standalone: true,
-  imports: [FormsModule,NgSelectComponent, CommonModule, ReactiveFormsModule ],
+  imports: [FormsModule,NgSelectComponent, CommonModule, ReactiveFormsModule,
+    MatDialogModule, MatFormFieldModule, MatInputModule, MatButtonModule
+   ],
   templateUrl: './search-form.component.html',
   styleUrl: './search-form.component.scss'
 })
@@ -32,11 +40,12 @@ export class SearchFormComponent {
     Validators.pattern('^[1-9][0-9]{5}$')
   ]);
   loading!: boolean;
+  isDEC!: boolean;
 
-  constructor(private educationService: EducationCentreService) {
+  constructor(private educationService: EducationCentreService, private dialog: MatDialog, private authService: AuthService) {
     this.educationService.areas$.subscribe(x=> {
       this.areas = x;
-      this.uniqueCities = [...new Set(this.areas.map(x => x.city))];
+      this.uniqueCities = [...new Set(this.areas.map(x => x.city))].sort();
     });
     this.educationService.loading$.subscribe(x=> {
       this.loading = x;
@@ -48,6 +57,9 @@ export class SearchFormComponent {
         this.pincode.setValue(null);
       }
     });
+    this.authService.isLoggedIn$.subscribe((x) => {
+        this.isDEC = x;
+      });
   }
 
   onSearch() {
@@ -95,5 +107,18 @@ export class SearchFormComponent {
 
   onClearArea() {
     this.clearSearch.emit();
+  }
+
+  openCreateDialog() {
+    const dialogRef = this.dialog.open(EditDialogComponent, {
+      width: '500px',
+      data: { isCreateCentre: true } 
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log('Form result:', result);
+      }
+    });
   }
 }

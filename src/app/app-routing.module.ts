@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SearchBvComponent } from './components/search-bv/search-bv.component';
-import { AppComponent } from './app.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { BvCentresListComponent } from './bv-centres-list/bv-centres-list.component';
 
-const routes: Routes = [
-  // { path: '', component: AppComponent }, //main content - locator form 
-  // { path: 'home', component: SearchBvComponent },
-  { path: 'search', component: SearchBvComponent },
-  { path: '**', redirectTo: '' }
+export const routes: Routes = [
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },  
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'bvCentresList', component: BvCentresListComponent },
+  { path: '**', redirectTo: 'dashboard' }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: false })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
