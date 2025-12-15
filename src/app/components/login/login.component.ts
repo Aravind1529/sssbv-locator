@@ -8,6 +8,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
+import { EducationCentreService } from '../../services/education-centre.service';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -21,29 +23,34 @@ export class LoginComponent {
   password = '';
   errorMessage = '';
   hide= true;
+  role :any;
 
-  constructor(private auth: AuthService, public dialogRef: MatDialogRef<LoginComponent>) {}
+  constructor(private authService: AuthService, public dialogRef: MatDialogRef<LoginComponent>, private educationCentreService: EducationCentreService) {}
 
-  onLogin() {
+  async onLogin() {
     if (!this.username || !this.password) {
       this.errorMessage = 'Please enter both email and password.';
       return;
     }
-    this.auth.login({ email: this.username, password: this.password }).subscribe({
-      next: (message) => {
-       console.log(message);
-       if (message.includes('logged in')) {
-          this.errorMessage = '';
-          this.dialogRef.close('logged in'); 
-        } else {
-          this.errorMessage = 'Invalid credentials. Please try again.';
-        }
-      },
-      error: (message) => {
-        this.errorMessage = 'Invalid Username or password.';
-        console.log(message);
-      }
-    });
+    try {
+      const res = await firstValueFrom(
+        await this.educationCentreService.authenticateUser({
+          username: this.username,
+          password: this.password,
+        })
+      );
+      this.errorMessage = '';
+      this.authService.setSession("loggedIn");
+      localStorage.setItem('user', this.username);
+      localStorage.setItem('role', 'DEC');
+      this.authService.isLoggedIn$.next(true);
+      this.dialogRef.close(res); 
+    } catch (err) {
+      console.error(err);
+      this.authService.isLoggedIn$.next(false);
+      this.authService.clearLocalStorage();
+      this.errorMessage = 'Invalid credentials. Please try again.';
+    }
   }
 
   onInputChange() {
