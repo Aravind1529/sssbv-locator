@@ -88,6 +88,12 @@ export class EducationCentreService {
     );
   }
 
+  async authenticateUser(credentials: any) {
+    const authenticateCentresURL = `${AppConstants.BASE_URL}/api/authenticate-user`;
+
+    return this.http.post<EducationCentre>(authenticateCentresURL, credentials);
+  }
+
   searchCentres(
     searchData: any,
     criteria: string

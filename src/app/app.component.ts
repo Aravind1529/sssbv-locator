@@ -93,7 +93,7 @@ export class AppComponent implements OnInit{
       });
 
       dialogRef.afterClosed().subscribe((result) => {
-        if (result && localStorage.getItem('role')?.includes('dec')) {
+        if (result && localStorage.getItem('role')?.includes('DEC')) {
           // alert('Logged in as DEC');
           this.toastr.success('Logged in as DEC !');
         }

@@ -15,25 +15,7 @@ export class AuthService {
     this.startSessionWatcher();
   }
 
-  login(credentials: { email: string; password: string }) {
-    if (
-      credentials.email == 'bvadmin' &&
-      credentials.password == 'bvadmin@1926'
-    ) {
-      this.setSession("loggedIn");
-      localStorage.setItem('user', credentials.email);
-      localStorage.setItem('role', 'decTrichy');
-      this.isLoggedIn$.next(true);
-      return of('logged in');
-    } else {
-      this.isLoggedIn$.next(false);
-      this.clearLocalStorage();
-      console.error('login failed');
-      return of('null');
-    } 
-  }
-
-  private setSession(token: string) {
+  setSession(token: string) {
     localStorage.setItem(this.tokenKey, token);
     const expiry = Date.now() + this.sessionDuration;
     localStorage.setItem(this.expiryKey, expiry.toString());
