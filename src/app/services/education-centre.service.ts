@@ -4,6 +4,11 @@ import { EducationCentre } from '../models/education-centre.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AppConstants } from '../shared/app.constants';
 
+export interface OperationMessage {
+  type: 'success' | 'error';
+  message: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -15,6 +20,9 @@ export class EducationCentreService {
   areas$ = new BehaviorSubject<any[]>([]);
   clearModels$ = new BehaviorSubject<boolean>(false);
   clearCentres$ = new BehaviorSubject<boolean>(false);
+  deleteMessage$ = new BehaviorSubject<OperationMessage | null>(null);
+  createMessage$ = new BehaviorSubject<OperationMessage | null>(null);
+  editMessage$ = new BehaviorSubject<OperationMessage | null>(null);
   private jsonUrl = 'assets/json/bvCentres.json';
   loading$ = new BehaviorSubject<boolean>(true);
 
@@ -45,9 +53,18 @@ export class EducationCentreService {
         this.loading$.next(false);
         this.getCentres();
         console.log('Centre created successfully:', createdCentre);
+        this.createMessage$.next({
+          type: 'success',
+          message: 'Centre created successfully'
+        });
       },
       (error) => {
-        console.error('Error updating centre:', error);
+        this.loading$.next(false);
+        console.error('Error creating centre:', error);
+        this.createMessage$.next({
+          type: 'error',
+          message: 'Error creating centre. Please try again.'
+        });
       }
     );
   }
@@ -63,9 +80,18 @@ export class EducationCentreService {
         this.loading$.next(false);
         this.getCentres();
         console.log('Centre updated successfully:', updatedCentre);
+        this.editMessage$.next({
+          type: 'success',
+          message: 'Centre updated successfully'
+        });
       },
       (error) => {
+        this.loading$.next(false);
         console.error('Error updating centre:', error);
+        this.editMessage$.next({
+          type: 'error',
+          message: 'Error updating centre. Please try again.'
+        });
       }
     );
   }
@@ -79,11 +105,20 @@ export class EducationCentreService {
       () => {
         this.loading$.next(false);
         console.log('Deleted successfully');
+        this.deleteMessage$.next({
+          type: 'success',
+          message: 'Centre deleted successfully'
+        });
         // Optionally refresh the list
         this.getCentres();
       },
       (error) => {
+        this.loading$.next(false);
         console.error('Error deleting centre:', error);
+        this.deleteMessage$.next({
+          type: 'error',
+          message: 'Error deleting centre. Please try again.'
+        });
       }
     );
   }
