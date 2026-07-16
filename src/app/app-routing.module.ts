@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { BvCentresListComponent } from './bv-centres-list/bv-centres-list.component';
+import { BvCentresListComponent } from './components/bv-centres-list/bv-centres-list.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },  
