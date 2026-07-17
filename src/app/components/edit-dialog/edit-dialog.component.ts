@@ -6,7 +6,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
-import { ToastrService } from 'ngx-toastr';
 import { EducationCentreService } from '../../services/education-centre.service';
 import { CommonModule } from '@angular/common';
 
@@ -50,8 +49,7 @@ export class EditDialogComponent {
  constructor(
     public dialogRef: MatDialogRef<EditDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private educationCentreService: EducationCentreService,
-    private toastr: ToastrService
+    private educationCentreService: EducationCentreService
   ) {
   }
   
@@ -65,28 +63,8 @@ export class EditDialogComponent {
   save() {
     if(this.data.isCreateCentre) {
       this.educationCentreService.createCentre(this.centreData);
-      // Subscribe to create message
-      this.educationCentreService.createMessage$.subscribe((message) => {
-        if (message) {
-          if (message.type === 'success') {
-            this.toastr.success(message.message);
-          } else {
-            this.toastr.error(message.message);
-          }
-        }
-      });
     } else {
       this.educationCentreService.updateCentre(this.centreData);
-      // Subscribe to edit message
-      this.educationCentreService.editMessage$.subscribe((message) => {
-        if (message) {
-          if (message.type === 'success') {
-            this.toastr.success(message.message);
-          } else {
-            this.toastr.error(message.message);
-          }
-        }
-      });
     }
     this.dialogRef.close(this.data); 
   }
